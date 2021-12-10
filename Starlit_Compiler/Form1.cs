@@ -60,12 +60,31 @@ namespace Starlit_Compiler
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Process fullUpdater = new Process();
+            fullUpdater.StartInfo.FileName = textBox1.Text + "\\FullUpdate.bat";
+            DialogResult result;
+            result = MessageBox.Show("Are you sure you want to update every file?", "Confirmation", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                if (File.Exists(fullUpdater.StartInfo.FileName))
+                {
+                    button3.Enabled = false;
+                    fullUpdater.Start();
+                    fullUpdater.WaitForExit();
+                    button3.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("\"FullUpdate.bat\" could not be found in the specified workspace directory.",
+                        "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            button4.Enabled = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -76,6 +95,8 @@ namespace Starlit_Compiler
             {
                 button5.Enabled = false;
                 uiUpdater.Start();
+                uiUpdater.WaitForExit();
+                button5.Enabled = true;
             }
             else
             {

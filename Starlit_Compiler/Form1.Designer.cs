@@ -130,13 +130,13 @@ namespace Starlit_Compiler
             "Mika",
             "Kirari",
             "Nana",
-            "Kaede (Dummy)",
+            "Kaede",
             "Mirai",
             "Shizuka",
             "Tsubasa",
             "Tsumugi",
             "Kaori",
-            "Kotoha (Dummy)"});
+            "Kotoha"});
             this.checkedListBox3.Location = new System.Drawing.Point(140, 358);
             this.checkedListBox3.Name = "checkedListBox3";
             this.checkedListBox3.Size = new System.Drawing.Size(117, 199);
@@ -151,13 +151,13 @@ namespace Starlit_Compiler
             "Mika",
             "Kirari",
             "Nana",
-            "Kaede (Dummy)",
+            "Kaede",
             "Mirai",
             "Shizuka",
             "Tsubasa",
             "Tsumugi",
             "Kaori",
-            "Kotoha (Dummy)"});
+            "Kotoha"});
             this.checkedListBox4.Location = new System.Drawing.Point(140, 110);
             this.checkedListBox4.Name = "checkedListBox4";
             this.checkedListBox4.Size = new System.Drawing.Size(117, 199);
@@ -172,7 +172,7 @@ namespace Starlit_Compiler
             "Kaho",
             "Amana",
             "Rinze",
-            "Mamimi (Dummy)",
+            "Mamimi",
             "Leon",
             "Shika",
             "Kohaku",
@@ -191,7 +191,7 @@ namespace Starlit_Compiler
             "Kaho",
             "Amana",
             "Rinze",
-            "Mamimi (Dummy)",
+            "Mamimi",
             "Leon",
             "Shika",
             "Kohaku",
@@ -287,7 +287,8 @@ namespace Starlit_Compiler
             "Luminous Azul",
             "Luminous Rufus",
             "Luminous Giallo",
-            "DLC6"});
+            "DLC6",
+            "Japan 47"});
             this.checkedListBox11.Location = new System.Drawing.Point(671, 110);
             this.checkedListBox11.Name = "checkedListBox11";
             this.checkedListBox11.Size = new System.Drawing.Size(117, 199);
