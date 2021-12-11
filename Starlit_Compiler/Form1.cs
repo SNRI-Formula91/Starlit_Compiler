@@ -26,6 +26,17 @@ namespace Starlit_Compiler
             {
                 this.textBox2.Text = ConfigurationManager.AppSettings["commukitPath"];
             }
+            checkedListBox1.CheckOnClick = true;
+            checkedListBox2.CheckOnClick = true;
+            checkedListBox3.CheckOnClick = true;
+            checkedListBox4.CheckOnClick = true;
+            checkedListBox5.CheckOnClick = true;
+            checkedListBox6.CheckOnClick = true;
+            checkedListBox7.CheckOnClick = true;
+            checkedListBox8.CheckOnClick = true;
+            checkedListBox9.CheckOnClick = true;
+            checkedListBox10.CheckOnClick = true;
+            checkedListBox11.CheckOnClick = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -69,10 +80,10 @@ namespace Starlit_Compiler
             {
                 if (File.Exists(fullUpdater.StartInfo.FileName))
                 {
-                    button3.Enabled = false;
+                    DisableAllUpdates();
                     fullUpdater.Start();
                     fullUpdater.WaitForExit();
-                    button3.Enabled = true;
+                    EnableAllUpdates();
                 }
                 else
                 {
@@ -84,7 +95,7 @@ namespace Starlit_Compiler
 
         private void button4_Click(object sender, EventArgs e)
         {
-            button4.Enabled = false;
+            DisableAllUpdates();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -93,10 +104,10 @@ namespace Starlit_Compiler
             uiUpdater.StartInfo.FileName = textBox1.Text+"\\Export_EngPatch.bat";
             if(File.Exists(uiUpdater.StartInfo.FileName))
             {
-                button5.Enabled = false;
+                DisableAllUpdates();
                 uiUpdater.Start();
                 uiUpdater.WaitForExit();
-                button5.Enabled = true;
+                EnableAllUpdates();
             }
             else
             {
@@ -200,6 +211,20 @@ namespace Starlit_Compiler
             {
                 checkedListBox10.SetItemChecked(i, true);
             }
+        }
+
+        private void DisableAllUpdates()
+        {
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+        }
+
+        private void EnableAllUpdates()
+        {
+            button3.Enabled = true;
+            //button4.Enabled = true;
+            button5.Enabled = true;
         }
     }
 }
