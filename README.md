@@ -6,7 +6,7 @@ A Windows GUI tool for automating the updating and packaging of game translation
 1. Download the localization files. If you are want to make updates for a later game version, you will need to download localization files for the base version and every version after up to the one that is currently in use.
 2. Create a folder that will hold all the localization files and the Starlit Compiler. This will be your **workspace**.
 ## Setup
-1. Download the latest release.
+1. Download the latest release of the **Starlit Compiler.zip** file.
 2. Extract the contents of the release into your workspace directory.
 
 # Usage
