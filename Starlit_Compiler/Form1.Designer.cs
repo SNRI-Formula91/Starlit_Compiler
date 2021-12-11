@@ -198,7 +198,7 @@ namespace Starlit_Compiler
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrZhYrpscCXXC00Gg5n-cHDHfqrpOVEUv7laHoF58QylGdFJW9lwgwHpgOcX08i6idUk0gn28A1oZt/pub?gid=1258565376&single=true&output=csv"),
             new CommuFile("Nana", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0205.csv",
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrZhYrpscCXXC00Gg5n-cHDHfqrpOVEUv7laHoF58QylGdFJW9lwgwHpgOcX08i6idUk0gn28A1oZt/pub?gid=298474984&single=true&output=csv"),
-            new CommuFile("Kaede", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0206_A.csv",
+            new CommuFile("Kaede", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0206.csv",
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrZhYrpscCXXC00Gg5n-cHDHfqrpOVEUv7laHoF58QylGdFJW9lwgwHpgOcX08i6idUk0gn28A1oZt/pub?gid=1278012534&single=true&output=csv"),
             new CommuFile("Mirai", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0301.csv",
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrZhYrpscCXXC00Gg5n-cHDHfqrpOVEUv7laHoF58QylGdFJW9lwgwHpgOcX08i6idUk0gn28A1oZt/pub?gid=965365194&single=true&output=csv"),
@@ -210,7 +210,7 @@ namespace Starlit_Compiler
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrZhYrpscCXXC00Gg5n-cHDHfqrpOVEUv7laHoF58QylGdFJW9lwgwHpgOcX08i6idUk0gn28A1oZt/pub?gid=699579573&single=true&output=csv"),
             new CommuFile("Kaori", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0305.csv",
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrZhYrpscCXXC00Gg5n-cHDHfqrpOVEUv7laHoF58QylGdFJW9lwgwHpgOcX08i6idUk0gn28A1oZt/pub?gid=686826671&single=true&output=csv"),
-            new CommuFile("Kotoha", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0306_A.csv",
+            new CommuFile("Kotoha", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0306.csv",
             "NULL")
             });
             this.checkedListBox4.Location = new System.Drawing.Point(140, 110);
@@ -262,7 +262,7 @@ namespace Starlit_Compiler
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vQuktY8WZeM6J736p6MGY7_OGejXvqb3tfHSRBzBxt_I3hjcrOh5pW1V632CV2QjhTTTTPqTJ73Ts0Q/pub?gid=1258565376&single=true&output=csv"),
             new CommuFile("Rinze","\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0405.csv",
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vQuktY8WZeM6J736p6MGY7_OGejXvqb3tfHSRBzBxt_I3hjcrOh5pW1V632CV2QjhTTTTPqTJ73Ts0Q/pub?gid=298474984&single=true&output=csv"),
-            new CommuFile("Mamimi","\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0406_A.csv",
+            new CommuFile("Mamimi","\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0406.csv",
             "NULL"),
             new CommuFile("Leon","\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idol_contact_chr_0501.csv",
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vQuktY8WZeM6J736p6MGY7_OGejXvqb3tfHSRBzBxt_I3hjcrOh5pW1V632CV2QjhTTTTPqTJ73Ts0Q/pub?gid=965365194&single=true&output=csv"),
@@ -466,7 +466,6 @@ namespace Starlit_Compiler
             // 
             // button4
             // 
-            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(671, 388);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(117, 24);
