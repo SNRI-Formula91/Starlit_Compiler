@@ -14,6 +14,11 @@ Use the top two fields to specify the Workspace and Commu-kit folder paths. If y
 For those who have previously downloaded these files separately the two folder paths are referring to the following:
 * **Workspace path**: The folder that contains the "pakchunk99-EngPatch" folder. This folder path and its contents are follow a strict pattern for the English patch creation process.
 * **Commu-kit path**: The folder that contains the **Commu-kit.exe** and its dependencies.
+## Logging
+Different log files will be written depending on the method used to compile a patch:
+* **Only Update UI** --> UI_update.log
+* **Import Selected** --> quick_update.log
+* **Import All** --> full_update.log
 
 # Other notes
 * You may place the **Starlit_Compiler.exe** file anywhere you please as long as the **Starlit_Compiler.exe.Config** file is also place in the same location. 
