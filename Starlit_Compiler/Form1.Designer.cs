@@ -90,7 +90,7 @@ namespace Starlit_Compiler
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTukjyhQg-eGun8ie-kUA5kIqHuJM016rsVLp6OcXfQf-tlt2KJQwONbsS-WjAkPw23vtaikol7_Xvd/pub?gid=140432312&single=true&output=csv"),
             new CommuFile("Yayoi", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idolchr_0104_A.csv",
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTukjyhQg-eGun8ie-kUA5kIqHuJM016rsVLp6OcXfQf-tlt2KJQwONbsS-WjAkPw23vtaikol7_Xvd/pub?gid=670661375&single=true&output=csv"),
-            new CommuFile("Yukiho", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idolchr_0104_A.csv",
+            new CommuFile("Yukiho", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idolchr_0105_A.csv",
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTukjyhQg-eGun8ie-kUA5kIqHuJM016rsVLp6OcXfQf-tlt2KJQwONbsS-WjAkPw23vtaikol7_Xvd/pub?gid=1710270556&single=true&output=csv"),
             new CommuFile("Makoto", "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idolchr_0106_A.csv",
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTukjyhQg-eGun8ie-kUA5kIqHuJM016rsVLp6OcXfQf-tlt2KJQwONbsS-WjAkPw23vtaikol7_Xvd/pub?gid=1668579880&single=true&output=csv"),
@@ -357,7 +357,11 @@ namespace Starlit_Compiler
             new CommuFile("Monthly Stage","\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Stage\\CML_Stage_Select.csv",
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1MUhMRIB5P2QdHKqCWrYjf1jZovtVU5MJEBt3xrpkd8pQEIOtIr37dBU1rodcAgvgdOemsJ0Pxstz/pub?gid=1561180137&single=true&output=csv"),
             new CommuFile("Climax Challenge","\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Stage\\CML_idol_climax_challenge.csv",
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1MUhMRIB5P2QdHKqCWrYjf1jZovtVU5MJEBt3xrpkd8pQEIOtIr37dBU1rodcAgvgdOemsJ0Pxstz/pub?gid=5024484&single=true&output=csv")
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1MUhMRIB5P2QdHKqCWrYjf1jZovtVU5MJEBt3xrpkd8pQEIOtIr37dBU1rodcAgvgdOemsJ0Pxstz/pub?gid=5024484&single=true&output=csv"),
+            new CommuFile("Crossover Commus","\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Idol\\CML_idolchr_crossover.csv", 
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vRC17hk6elZWNgFZaqGw8Vw13aMujo38Fx0IkvQB6vtKypjkZkahYX3YeF7DbZ2j2RPcerYaT0YKnkM/pub?gid=1518693967&single=true&output=csv"),
+            new CommuFile("Unity Commus","\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\Unity\\CML_idolchr_danketu.csv", 
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vRC17hk6elZWNgFZaqGw8Vw13aMujo38Fx0IkvQB6vtKypjkZkahYX3YeF7DbZ2j2RPcerYaT0YKnkM/pub?gid=1182610682&single=true&output=csv")
             });
             this.checkedListBox9.Location = new System.Drawing.Point(538, 110);
             this.checkedListBox9.Name = "checkedListBox9";

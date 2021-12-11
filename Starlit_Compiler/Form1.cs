@@ -113,11 +113,11 @@ namespace Starlit_Compiler
                 {
                     DisableAllUpdates();
                     CreateTempBatch(TempBatchPath);
-                    /*Process quickUpdater = new Process();
+                    Process quickUpdater = new Process();
                     quickUpdater.StartInfo.FileName = TempBatchPath;
                     quickUpdater.Start();
-                    quickUpdater.WaitForExit();*/
-                    //File.Delete(TempBatchPath);
+                    quickUpdater.WaitForExit();
+                    File.Delete(TempBatchPath);
                     EnableAllUpdates();
                 }
                 else
@@ -262,7 +262,7 @@ namespace Starlit_Compiler
             using (StreamWriter quickUpdater = new StreamWriter(path))
             {
                 quickUpdater.WriteLine("@echo on");
-                quickUpdater.WriteLine("call: QUICK_UPDATE > \"%cd%\\quick_update.log\"");
+                quickUpdater.WriteLine("call :QUICK_UPDATE > \"%cd%\\quick_update.log\"");
                 quickUpdater.WriteLine("exit /B");
                 quickUpdater.WriteLine("");
                 quickUpdater.WriteLine(":QUICK_UPDATE");
