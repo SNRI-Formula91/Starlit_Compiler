@@ -14,6 +14,11 @@ Use the top two fields to specify the Workspace and Commu-kit folder paths. If y
 For those who have previously downloaded these files separately the two folder paths are referring to the following:
 * **Workspace path**: The folder that contains the "pakchunk99-EngPatch" folder. This folder path and its contents are follow a strict pattern for the English patch creation process.
 * **Commu-kit path**: The folder that contains the **Commu-kit.exe** and its dependencies.
+## Updating
+There are 3 main translation and importing update methods:
+* **UI Only**: This only updates the UI files and creates the *.PAK* patch mod file. All 3 updating methods will update the UI in the end in order to create the *.PAK* mod files.
+* **Only selected**: This **only updates the selected Commu files**. This is good for quickly updating a few files. Because the patching process injects text from *CSV* files, injecting files from files that have no new updates is redundant and unnecesary.
+* **All Commu files**: Updates literally every possible existing file. Good to run for the very first time or if there are plenty of updates that justify updating a large number of files. (**Warning: This process takes a a pretty long time due to the number of files...**)
 ## Logging
 Different log files will be written depending on the method used to compile a patch:
 * **Only Update UI** --> UI_update.log
