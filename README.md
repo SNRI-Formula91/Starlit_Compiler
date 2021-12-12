@@ -22,8 +22,8 @@ There are 3 main translation and importing update methods:
 ## Logging
 Different log files will be written depending on the method used to compile a patch:
 * **Only Update UI** --> UI_update.log
-* **Import Selected** --> quick_update.log
-* **Import All** --> full_update.log
+* **Import Selected** --> quick_update.log, commu_import.log, & UI_update.log
+* **Import All** --> full_update.log, commu_import.log, & UI_update.log
 
 # Other notes
 * You may place the **Starlit_Compiler.exe** file anywhere you please as long as the **Starlit_Compiler.exe.Config** file is also place in the same location. 
