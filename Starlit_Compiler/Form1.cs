@@ -19,41 +19,30 @@ namespace Starlit_Compiler
             InitializeComponent();
             if(!string.IsNullOrEmpty(ConfigurationManager.AppSettings["workspacePath"]))
             {
-                this.textBox1.Text = ConfigurationManager.AppSettings["workspacePath"];
+                textBox1.Text = ConfigurationManager.AppSettings["workspacePath"];
             }
             if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["commukitPath"]))
             {
-                this.textBox2.Text = ConfigurationManager.AppSettings["commukitPath"];
+                textBox2.Text = ConfigurationManager.AppSettings["commukitPath"];
             }
-            listBoxes = new Dictionary<string, CheckedListBox>()
-            {
-                { "765AS Commus", checkedListBox1 },
-                { "765AS Work+Events", checkedListBox2 },
-                { "CG/ML Work+Events", checkedListBox3 },
-                { "CG/ML Commus", checkedListBox4 },
-                { "SC/Other Work+Events", checkedListBox5 },
-                { "SC/Other Commus", checkedListBox6 },
-                { "Main Story", checkedListBox7 },
-                { "NPC Dialogue+Commus", checkedListBox8 },
-                { "Game Events", checkedListBox9 },
-                { "Other", checkedListBox10 },
-                { "DLC", checkedListBox11 },
-            };
+            listBoxes = new Dictionary<string, MultiCheckList>();
             foreach (CommuFile csvMetadata in CommuFile.data)
             {
-                CheckedListBox listBox = listBoxes[csvMetadata.Category];
-                if (!listBox.Items.Contains(csvMetadata.Label))
+                bool hasValue = listBoxes.TryGetValue(csvMetadata.Category, out MultiCheckList multiCheckList);
+                if (!hasValue)
                 {
-                    listBox.Items.Add(csvMetadata.Label);
+                    multiCheckList = new MultiCheckList() { Title = csvMetadata.Category };
+                    listBoxes.Add(csvMetadata.Category, multiCheckList);
+                    flowLayoutPanel1.Controls.Add(multiCheckList);
                 }
-            }
-            foreach (CheckedListBox listBox in listBoxes.Values)
-            {
-                listBox.CheckOnClick = true;
+                if (!multiCheckList.Items.Contains(csvMetadata.Label))
+                {
+                    multiCheckList.Items.Add(csvMetadata.Label);
+                }
             }
         }
 
-        private readonly Dictionary<string, CheckedListBox> listBoxes;
+        private readonly Dictionary<string, MultiCheckList> listBoxes;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -156,94 +145,6 @@ namespace Starlit_Compiler
             ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
-            {
-                checkedListBox1.SetItemChecked(i, true);
-            }
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox4.Items.Count; i++)
-            {
-                checkedListBox4.SetItemChecked(i, true);
-            }
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox6.Items.Count; i++)
-            {
-                checkedListBox6.SetItemChecked(i, true);
-            }
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            for(int i = 0; i < checkedListBox7.Items.Count; i++)
-            {
-                checkedListBox7.SetItemChecked(i, true);
-            }
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox9.Items.Count; i++)
-            {
-                checkedListBox9.SetItemChecked(i, true);
-            }
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox11.Items.Count; i++)
-            {
-                checkedListBox11.SetItemChecked(i, true);
-            }
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox2.Items.Count; i++)
-            {
-                checkedListBox2.SetItemChecked(i, true);
-            }
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox3.Items.Count; i++)
-            {
-                checkedListBox3.SetItemChecked(i, true);
-            }
-        }
-
-        private void button14_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox5.Items.Count; i++)
-            {
-                checkedListBox5.SetItemChecked(i, true);
-            }
-        }
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox8.Items.Count; i++)
-            {
-                checkedListBox8.SetItemChecked(i, true);
-            }
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox10.Items.Count; i++)
-            {
-                checkedListBox10.SetItemChecked(i, true);
-            }
-        }
-
         private void DisableAllUpdates()
         {
             button3.Enabled = false;
@@ -270,10 +171,9 @@ namespace Starlit_Compiler
             downloadTasks = new List<DownloadTask>();
             foreach (var csvMetadata in CommuFile.data)
             {
-                CheckedListBox listBox = listBoxes[csvMetadata.Category];
-                int index = listBox.FindStringExact(csvMetadata.Label);
+                MultiCheckList listBox = listBoxes[csvMetadata.Category];
                 if (!string.IsNullOrEmpty(csvMetadata.FileUrl) && 
-                    (downloadAll || listBox.GetItemCheckState(index) == CheckState.Checked))
+                    (downloadAll || listBox.IsChecked(csvMetadata.Label)))
                 {
                     DownloadTask downloadTask = new DownloadTask(csvMetadata.FileUrl, textBox1.Text + csvMetadata.FilePath);
                     downloadTask.ProgressChanged += DownloadProgressChanged;
