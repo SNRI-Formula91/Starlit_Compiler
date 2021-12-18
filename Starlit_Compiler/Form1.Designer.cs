@@ -32,7 +32,6 @@ namespace Starlit_Compiler
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.workspacePathDialogue = new System.Windows.Forms.FolderBrowserDialog();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,7 +39,6 @@ namespace Starlit_Compiler
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.commukitPathDialogue = new System.Windows.Forms.FolderBrowserDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -59,26 +57,25 @@ namespace Starlit_Compiler
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(3, 5);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(828, 20);
+            this.textBox1.Size = new System.Drawing.Size(830, 20);
             this.textBox1.TabIndex = 11;
             // 
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(3, 31);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.textBox2.Location = new System.Drawing.Point(3, 32);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(828, 20);
+            this.textBox2.Size = new System.Drawing.Size(830, 20);
             this.textBox2.TabIndex = 12;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(837, 0);
+            this.button1.Location = new System.Drawing.Point(837, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 23);
@@ -91,7 +88,7 @@ namespace Starlit_Compiler
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(837, 29);
+            this.button2.Location = new System.Drawing.Point(837, 31);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 23);
@@ -146,9 +143,9 @@ namespace Starlit_Compiler
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Location = new System.Drawing.Point(8, 8);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(954, 52);
+            this.panel1.Size = new System.Drawing.Size(956, 56);
             this.panel1.TabIndex = 52;
             // 
             // panel13
@@ -183,7 +180,7 @@ namespace Starlit_Compiler
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(8, 64);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(835, 535);
             this.flowLayoutPanel1.TabIndex = 63;
@@ -236,7 +233,6 @@ namespace Starlit_Compiler
         }
 
         #endregion
-        private System.Windows.Forms.FolderBrowserDialog workspacePathDialogue;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
@@ -244,7 +240,6 @@ namespace Starlit_Compiler
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.FolderBrowserDialog commukitPathDialogue;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel13;

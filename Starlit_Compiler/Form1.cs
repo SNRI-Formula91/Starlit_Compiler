@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace Starlit_Compiler
 {
@@ -17,22 +16,16 @@ namespace Starlit_Compiler
         public Form1()
         {
             InitializeComponent();
-            if(!string.IsNullOrEmpty(ConfigurationManager.AppSettings["workspacePath"]))
-            {
-                textBox1.Text = ConfigurationManager.AppSettings["workspacePath"];
-            }
-            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["commukitPath"]))
-            {
-                textBox2.Text = ConfigurationManager.AppSettings["commukitPath"];
-            }
-            listBoxes = new Dictionary<string, MultiCheckList>();
+            WorkspacePath = ConfigurationManager.AppSettings["workspacePath"];
+            CommuKitPath = ConfigurationManager.AppSettings["commukitPath"];
+            checkLists = new Dictionary<string, MultiCheckList>();
             foreach (CommuFile csvMetadata in CommuFile.data)
             {
-                bool hasValue = listBoxes.TryGetValue(csvMetadata.Category, out MultiCheckList multiCheckList);
+                bool hasValue = checkLists.TryGetValue(csvMetadata.Category, out MultiCheckList multiCheckList);
                 if (!hasValue)
                 {
                     multiCheckList = new MultiCheckList() { Title = csvMetadata.Category };
-                    listBoxes.Add(csvMetadata.Category, multiCheckList);
+                    checkLists.Add(csvMetadata.Category, multiCheckList);
                     flowLayoutPanel1.Controls.Add(multiCheckList);
                 }
                 if (!multiCheckList.Items.Contains(csvMetadata.Label))
@@ -42,35 +35,51 @@ namespace Starlit_Compiler
             }
         }
 
-        private readonly Dictionary<string, MultiCheckList> listBoxes;
+        private string WorkspacePath
+        {
+            get => textBox1.Text;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    return;
+                textBox1.Text = value;
+                UpdateConfigs("workspacePath", value);
+            }
+        }
+        private string CommuKitPath
+        {
+            get => textBox2.Text;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    return;
+                textBox2.Text = value;
+                UpdateConfigs("commukitPath", value);
+            }
+        }
+        private readonly Dictionary<string, MultiCheckList> checkLists;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            workspacePathDialogue = new FolderBrowserDialog
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog("Select translation workspace folder.")
             {
-                Description = "Select the folder containing the translation workspace.",
-                RootFolder = Environment.SpecialFolder.Desktop,
-                ShowNewFolderButton = false
+                IsFolderPicker = true
             };
-            if (workspacePathDialogue.ShowDialog() == DialogResult.OK)
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                textBox1.Text = workspacePathDialogue.SelectedPath;
-                UpdateConfigs("workspacePath", workspacePathDialogue.SelectedPath);
+                WorkspacePath = dialog.FileName;
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            commukitPathDialogue = new FolderBrowserDialog
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog("Select Commu-Kit folder.")
             {
-                Description = "Select the folder containing the Commu-Kit.",
-                RootFolder = Environment.SpecialFolder.Desktop,
-                ShowNewFolderButton = false
+                IsFolderPicker = true
             };
-            if (commukitPathDialogue.ShowDialog() == DialogResult.OK)
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                textBox2.Text = commukitPathDialogue.SelectedPath;
-                UpdateConfigs("commukitPath", commukitPathDialogue.SelectedPath);
+                CommuKitPath = dialog.FileName;
             }
         }
 
@@ -102,8 +111,18 @@ namespace Starlit_Compiler
 
         private void btnConvertCsv_Click(object sender, EventArgs e)
         {
+            RunBatchFile("Import_UAsset_Updates.bat");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            RunBatchFile("Export_EngPatch.bat");
+        }
+
+        private void RunBatchFile(string batchPath)
+        {
             Process uiUpdater = new Process();
-            uiUpdater.StartInfo.FileName = textBox1.Text + "\\Import_UAsset_Updates.bat";
+            uiUpdater.StartInfo.FileName = $"{WorkspacePath}\\{batchPath}";
             if (File.Exists(uiUpdater.StartInfo.FileName))
             {
                 DisableAllUpdates();
@@ -113,25 +132,7 @@ namespace Starlit_Compiler
             }
             else
             {
-                MessageBox.Show("\"Import_UAsset_Updates.bat\" could not be found in the specified workspace directory.",
-                    "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Process uiUpdater = new Process();
-            uiUpdater.StartInfo.FileName = textBox1.Text+"\\Export_EngPatch.bat";
-            if(File.Exists(uiUpdater.StartInfo.FileName))
-            {
-                DisableAllUpdates();
-                uiUpdater.Start();
-                uiUpdater.WaitForExit();
-                EnableAllUpdates();
-            }
-            else
-            {
-                MessageBox.Show("\"Export_EngPatch.bat\" could not be found in the specified workspace directory.", 
+                MessageBox.Show($"{batchPath} could not be found in the specified workspace directory.",
                     "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -162,11 +163,11 @@ namespace Starlit_Compiler
             List<DownloadTask> downloadTasks = new List<DownloadTask>();
             foreach (var csvMetadata in CommuFile.data)
             {
-                MultiCheckList listBox = listBoxes[csvMetadata.Category];
+                MultiCheckList checkList = checkLists[csvMetadata.Category];
                 if (!string.IsNullOrEmpty(csvMetadata.FileUrl) && 
-                    (downloadAll || listBox.IsChecked(csvMetadata.Label)))
+                    (downloadAll || checkList.IsChecked(csvMetadata.Label)))
                 {
-                    DownloadTask downloadTask = new DownloadTask(csvMetadata.FileUrl, textBox1.Text + csvMetadata.FilePath);
+                    DownloadTask downloadTask = new DownloadTask(csvMetadata.FileUrl, WorkspacePath + csvMetadata.FilePath);
                     downloadTask.ProgressChanged += () => DownloadProgressChanged(downloadTasks);
                     downloadTasks.Add(downloadTask);
                 }
@@ -186,7 +187,7 @@ namespace Starlit_Compiler
             int completedCount = downloadTasks.Where(t => t.Completed).Count();
             long received = downloadTasks.Select(t => t.BytesReceived).Sum();
             progressLabel.Text = $"{completedCount}/{taskCount} files        {received / 1024} KB";
-            progressBar.Value = (100 * completedCount) / taskCount;
+            progressBar.Value = 100 * completedCount / taskCount;
         }
     }
 }
