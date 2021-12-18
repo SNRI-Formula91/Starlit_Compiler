@@ -31,7 +31,7 @@ namespace Starlit_Compiler
         {
             this.btnAll = new System.Windows.Forms.Button();
             this.checkList = new System.Windows.Forms.CheckedListBox();
-            this.lblTitle = new System.Windows.Forms.TextBox();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAll
@@ -58,30 +58,25 @@ namespace Starlit_Compiler
             // 
             // lblTitle
             // 
-            this.lblTitle.BackColor = System.Drawing.SystemColors.Window;
-            this.lblTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblTitle.Location = new System.Drawing.Point(2, 2);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.ReadOnly = true;
             this.lblTitle.Size = new System.Drawing.Size(120, 13);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.TabStop = false;
             this.lblTitle.Text = "Title";
-            this.lblTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // MultiCheckList
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnAll);
             this.Controls.Add(this.checkList);
-            this.Controls.Add(this.lblTitle);
             this.Name = "MultiCheckList";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.Size = new System.Drawing.Size(124, 247);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -89,6 +84,6 @@ namespace Starlit_Compiler
 
         private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.CheckedListBox checkList;
-        private System.Windows.Forms.TextBox lblTitle;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

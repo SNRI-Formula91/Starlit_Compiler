@@ -60,7 +60,7 @@ namespace Starlit_Compiler
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(830, 20);
-            this.textBox1.TabIndex = 11;
+            this.textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
@@ -70,7 +70,7 @@ namespace Starlit_Compiler
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(830, 20);
-            this.textBox2.TabIndex = 12;
+            this.textBox2.TabIndex = 3;
             // 
             // button1
             // 
@@ -79,8 +79,7 @@ namespace Starlit_Compiler
             this.button1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 23);
-            this.button1.TabIndex = 13;
-            this.button1.TabStop = false;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Workspace Path";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -92,7 +91,7 @@ namespace Starlit_Compiler
             this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 23);
-            this.button2.TabIndex = 14;
+            this.button2.TabIndex = 4;
             this.button2.Text = "Commu-kit Path";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -103,7 +102,7 @@ namespace Starlit_Compiler
             this.button3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(117, 24);
-            this.button3.TabIndex = 15;
+            this.button3.TabIndex = 6;
             this.button3.Text = "Download All";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -114,7 +113,7 @@ namespace Starlit_Compiler
             this.button4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(117, 24);
-            this.button4.TabIndex = 16;
+            this.button4.TabIndex = 7;
             this.button4.Text = "Download Selected";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -125,7 +124,7 @@ namespace Starlit_Compiler
             this.button5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(117, 23);
-            this.button5.TabIndex = 17;
+            this.button5.TabIndex = 9;
             this.button5.Text = "Create .pak";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -167,7 +166,7 @@ namespace Starlit_Compiler
             this.btnConvertCsv.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.btnConvertCsv.Name = "btnConvertCsv";
             this.btnConvertCsv.Size = new System.Drawing.Size(117, 23);
-            this.btnConvertCsv.TabIndex = 18;
+            this.btnConvertCsv.TabIndex = 8;
             this.btnConvertCsv.Text = "Convert CSVs";
             this.btnConvertCsv.UseVisualStyleBackColor = true;
             this.btnConvertCsv.Click += new System.EventHandler(this.btnConvertCsv_Click);
@@ -183,7 +182,7 @@ namespace Starlit_Compiler
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(835, 535);
-            this.flowLayoutPanel1.TabIndex = 63;
+            this.flowLayoutPanel1.TabIndex = 5;
             // 
             // statusStrip1
             // 
