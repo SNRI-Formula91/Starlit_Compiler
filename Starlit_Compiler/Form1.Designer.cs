@@ -75,14 +75,45 @@ namespace Starlit_Compiler
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkedListBox1
             // 
+            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 169);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox1.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox1.TabIndex = 0;
@@ -90,8 +121,8 @@ namespace Starlit_Compiler
             // checkedListBox2
             // 
             this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(12, 551);
-            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox2.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox2.Name = "checkedListBox2";
             this.checkedListBox2.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox2.TabIndex = 1;
@@ -99,8 +130,8 @@ namespace Starlit_Compiler
             // checkedListBox3
             // 
             this.checkedListBox3.FormattingEnabled = true;
-            this.checkedListBox3.Location = new System.Drawing.Point(210, 551);
-            this.checkedListBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox3.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox3.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox3.Name = "checkedListBox3";
             this.checkedListBox3.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox3.TabIndex = 3;
@@ -108,8 +139,8 @@ namespace Starlit_Compiler
             // checkedListBox4
             // 
             this.checkedListBox4.FormattingEnabled = true;
-            this.checkedListBox4.Location = new System.Drawing.Point(210, 169);
-            this.checkedListBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox4.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox4.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox4.Name = "checkedListBox4";
             this.checkedListBox4.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox4.TabIndex = 2;
@@ -117,8 +148,8 @@ namespace Starlit_Compiler
             // checkedListBox5
             // 
             this.checkedListBox5.FormattingEnabled = true;
-            this.checkedListBox5.Location = new System.Drawing.Point(408, 551);
-            this.checkedListBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox5.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox5.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox5.Name = "checkedListBox5";
             this.checkedListBox5.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox5.TabIndex = 5;
@@ -126,8 +157,8 @@ namespace Starlit_Compiler
             // checkedListBox6
             // 
             this.checkedListBox6.FormattingEnabled = true;
-            this.checkedListBox6.Location = new System.Drawing.Point(408, 169);
-            this.checkedListBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox6.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox6.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox6.Name = "checkedListBox6";
             this.checkedListBox6.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox6.TabIndex = 4;
@@ -136,8 +167,8 @@ namespace Starlit_Compiler
             // 
             this.checkedListBox7.ColumnWidth = 3;
             this.checkedListBox7.FormattingEnabled = true;
-            this.checkedListBox7.Location = new System.Drawing.Point(608, 169);
-            this.checkedListBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox7.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox7.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox7.Name = "checkedListBox7";
             this.checkedListBox7.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox7.TabIndex = 6;
@@ -145,8 +176,8 @@ namespace Starlit_Compiler
             // checkedListBox8
             // 
             this.checkedListBox8.FormattingEnabled = true;
-            this.checkedListBox8.Location = new System.Drawing.Point(608, 551);
-            this.checkedListBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox8.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox8.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox8.Name = "checkedListBox8";
             this.checkedListBox8.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox8.TabIndex = 7;
@@ -154,8 +185,8 @@ namespace Starlit_Compiler
             // checkedListBox9
             // 
             this.checkedListBox9.FormattingEnabled = true;
-            this.checkedListBox9.Location = new System.Drawing.Point(807, 169);
-            this.checkedListBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox9.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox9.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox9.Name = "checkedListBox9";
             this.checkedListBox9.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox9.TabIndex = 8;
@@ -163,8 +194,8 @@ namespace Starlit_Compiler
             // checkedListBox10
             // 
             this.checkedListBox10.FormattingEnabled = true;
-            this.checkedListBox10.Location = new System.Drawing.Point(807, 551);
-            this.checkedListBox10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox10.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox10.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox10.Name = "checkedListBox10";
             this.checkedListBox10.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox10.TabIndex = 9;
@@ -172,32 +203,37 @@ namespace Starlit_Compiler
             // checkedListBox11
             // 
             this.checkedListBox11.FormattingEnabled = true;
-            this.checkedListBox11.Location = new System.Drawing.Point(1006, 169);
-            this.checkedListBox11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkedListBox11.Location = new System.Drawing.Point(2, 63);
+            this.checkedListBox11.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.checkedListBox11.Name = "checkedListBox11";
             this.checkedListBox11.Size = new System.Drawing.Size(174, 303);
             this.checkedListBox11.TabIndex = 10;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 18);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(4, 7);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(769, 26);
+            this.textBox1.Size = new System.Drawing.Size(1002, 26);
             this.textBox1.TabIndex = 11;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 57);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(4, 47);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(769, 26);
+            this.textBox2.Size = new System.Drawing.Size(1002, 26);
             this.textBox2.TabIndex = 12;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(792, 15);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(1018, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 0, 0, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(176, 35);
             this.button1.TabIndex = 13;
@@ -208,8 +244,9 @@ namespace Starlit_Compiler
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(792, 54);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(1018, 45);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 0, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(176, 35);
             this.button2.TabIndex = 14;
@@ -219,8 +256,8 @@ namespace Starlit_Compiler
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1006, 551);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button3.Location = new System.Drawing.Point(1, 108);
+            this.button3.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(176, 37);
             this.button3.TabIndex = 15;
@@ -230,8 +267,8 @@ namespace Starlit_Compiler
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1006, 597);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button4.Location = new System.Drawing.Point(1, 154);
+            this.button4.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(176, 37);
             this.button4.TabIndex = 16;
@@ -241,8 +278,8 @@ namespace Starlit_Compiler
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1006, 643);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button5.Location = new System.Drawing.Point(1, 200);
+            this.button5.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(176, 35);
             this.button5.TabIndex = 17;
@@ -254,8 +291,8 @@ namespace Starlit_Compiler
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.Window;
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Location = new System.Drawing.Point(210, 105);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox4.Location = new System.Drawing.Point(1, 1);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(176, 19);
@@ -265,10 +302,12 @@ namespace Starlit_Compiler
             // 
             // textBox3
             // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.BackColor = System.Drawing.SystemColors.Window;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Location = new System.Drawing.Point(12, 105);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox3.Location = new System.Drawing.Point(1, 1);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(176, 19);
@@ -280,8 +319,8 @@ namespace Starlit_Compiler
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.Window;
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Location = new System.Drawing.Point(408, 105);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox5.Location = new System.Drawing.Point(1, 1);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(176, 19);
@@ -293,8 +332,8 @@ namespace Starlit_Compiler
             // 
             this.textBox6.BackColor = System.Drawing.SystemColors.Window;
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Location = new System.Drawing.Point(608, 105);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox6.Location = new System.Drawing.Point(1, 1);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(176, 19);
@@ -306,8 +345,8 @@ namespace Starlit_Compiler
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.Window;
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Location = new System.Drawing.Point(807, 105);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox7.Location = new System.Drawing.Point(1, 1);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(176, 19);
@@ -319,8 +358,8 @@ namespace Starlit_Compiler
             // 
             this.textBox8.BackColor = System.Drawing.SystemColors.Window;
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Location = new System.Drawing.Point(1006, 105);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox8.Location = new System.Drawing.Point(1, 1);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(176, 19);
@@ -332,8 +371,8 @@ namespace Starlit_Compiler
             // 
             this.textBox9.BackColor = System.Drawing.SystemColors.Window;
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Location = new System.Drawing.Point(12, 488);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox9.Location = new System.Drawing.Point(1, 1);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(176, 19);
@@ -345,8 +384,8 @@ namespace Starlit_Compiler
             // 
             this.textBox10.BackColor = System.Drawing.SystemColors.Window;
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox10.Location = new System.Drawing.Point(210, 488);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox10.Location = new System.Drawing.Point(1, 1);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(176, 19);
@@ -358,8 +397,8 @@ namespace Starlit_Compiler
             // 
             this.textBox11.BackColor = System.Drawing.SystemColors.Window;
             this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox11.Location = new System.Drawing.Point(408, 488);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox11.Location = new System.Drawing.Point(1, 1);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(176, 19);
@@ -371,8 +410,8 @@ namespace Starlit_Compiler
             // 
             this.textBox12.BackColor = System.Drawing.SystemColors.Window;
             this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox12.Location = new System.Drawing.Point(608, 488);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox12.Location = new System.Drawing.Point(1, 1);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(176, 19);
@@ -384,8 +423,8 @@ namespace Starlit_Compiler
             // 
             this.textBox13.BackColor = System.Drawing.SystemColors.Window;
             this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox13.Location = new System.Drawing.Point(807, 488);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox13.Location = new System.Drawing.Point(1, 1);
+            this.textBox13.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
             this.textBox13.Size = new System.Drawing.Size(176, 19);
@@ -399,8 +438,10 @@ namespace Starlit_Compiler
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(40, 128);
-            this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.Location = new System.Drawing.Point(33, 24);
+            this.button6.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(112, 35);
             this.button6.TabIndex = 41;
@@ -410,8 +451,8 @@ namespace Starlit_Compiler
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(240, 128);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button7.Location = new System.Drawing.Point(33, 24);
+            this.button7.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(112, 35);
             this.button7.TabIndex = 42;
@@ -421,8 +462,8 @@ namespace Starlit_Compiler
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(438, 128);
-            this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button8.Location = new System.Drawing.Point(33, 24);
+            this.button8.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(112, 35);
             this.button8.TabIndex = 43;
@@ -432,8 +473,8 @@ namespace Starlit_Compiler
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(632, 128);
-            this.button9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button9.Location = new System.Drawing.Point(33, 24);
+            this.button9.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(112, 35);
             this.button9.TabIndex = 44;
@@ -443,8 +484,8 @@ namespace Starlit_Compiler
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(837, 128);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button10.Location = new System.Drawing.Point(33, 24);
+            this.button10.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(112, 35);
             this.button10.TabIndex = 45;
@@ -454,8 +495,8 @@ namespace Starlit_Compiler
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(1034, 128);
-            this.button11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button11.Location = new System.Drawing.Point(33, 24);
+            this.button11.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(112, 35);
             this.button11.TabIndex = 46;
@@ -465,8 +506,8 @@ namespace Starlit_Compiler
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(40, 511);
-            this.button12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button12.Location = new System.Drawing.Point(33, 24);
+            this.button12.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(112, 35);
             this.button12.TabIndex = 47;
@@ -476,8 +517,8 @@ namespace Starlit_Compiler
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(240, 511);
-            this.button13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button13.Location = new System.Drawing.Point(33, 24);
+            this.button13.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(112, 35);
             this.button13.TabIndex = 48;
@@ -487,8 +528,8 @@ namespace Starlit_Compiler
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(438, 511);
-            this.button14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button14.Location = new System.Drawing.Point(33, 24);
+            this.button14.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(112, 35);
             this.button14.TabIndex = 49;
@@ -498,8 +539,8 @@ namespace Starlit_Compiler
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(632, 511);
-            this.button15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button15.Location = new System.Drawing.Point(33, 24);
+            this.button15.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(112, 35);
             this.button15.TabIndex = 50;
@@ -509,8 +550,8 @@ namespace Starlit_Compiler
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(837, 511);
-            this.button16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button16.Location = new System.Drawing.Point(33, 24);
+            this.button16.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(112, 35);
             this.button16.TabIndex = 51;
@@ -518,59 +559,224 @@ namespace Starlit_Compiler
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1194, 80);
+            this.panel1.TabIndex = 52;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.checkedListBox1);
+            this.panel2.Controls.Add(this.textBox3);
+            this.panel2.Location = new System.Drawing.Point(10, 3);
+            this.panel2.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(1);
+            this.panel2.Size = new System.Drawing.Size(178, 369);
+            this.panel2.TabIndex = 53;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.button7);
+            this.panel3.Controls.Add(this.checkedListBox4);
+            this.panel3.Controls.Add(this.textBox4);
+            this.panel3.Location = new System.Drawing.Point(208, 3);
+            this.panel3.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(1);
+            this.panel3.Size = new System.Drawing.Size(178, 369);
+            this.panel3.TabIndex = 54;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.textBox5);
+            this.panel4.Controls.Add(this.checkedListBox6);
+            this.panel4.Controls.Add(this.button8);
+            this.panel4.Location = new System.Drawing.Point(406, 3);
+            this.panel4.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(1);
+            this.panel4.Size = new System.Drawing.Size(178, 369);
+            this.panel4.TabIndex = 55;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.textBox6);
+            this.panel5.Controls.Add(this.checkedListBox7);
+            this.panel5.Controls.Add(this.button9);
+            this.panel5.Location = new System.Drawing.Point(604, 3);
+            this.panel5.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(1);
+            this.panel5.Size = new System.Drawing.Size(178, 369);
+            this.panel5.TabIndex = 55;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.textBox7);
+            this.panel6.Controls.Add(this.checkedListBox9);
+            this.panel6.Controls.Add(this.button10);
+            this.panel6.Location = new System.Drawing.Point(802, 3);
+            this.panel6.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Padding = new System.Windows.Forms.Padding(1);
+            this.panel6.Size = new System.Drawing.Size(178, 369);
+            this.panel6.TabIndex = 56;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.button11);
+            this.panel7.Controls.Add(this.checkedListBox11);
+            this.panel7.Controls.Add(this.textBox8);
+            this.panel7.Location = new System.Drawing.Point(1000, 3);
+            this.panel7.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Padding = new System.Windows.Forms.Padding(1);
+            this.panel7.Size = new System.Drawing.Size(178, 369);
+            this.panel7.TabIndex = 55;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.button12);
+            this.panel8.Controls.Add(this.checkedListBox2);
+            this.panel8.Controls.Add(this.textBox9);
+            this.panel8.Location = new System.Drawing.Point(208, 378);
+            this.panel8.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Padding = new System.Windows.Forms.Padding(1);
+            this.panel8.Size = new System.Drawing.Size(178, 369);
+            this.panel8.TabIndex = 57;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.button13);
+            this.panel9.Controls.Add(this.checkedListBox3);
+            this.panel9.Controls.Add(this.textBox10);
+            this.panel9.Location = new System.Drawing.Point(406, 378);
+            this.panel9.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Padding = new System.Windows.Forms.Padding(1);
+            this.panel9.Size = new System.Drawing.Size(178, 369);
+            this.panel9.TabIndex = 58;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.button14);
+            this.panel10.Controls.Add(this.checkedListBox5);
+            this.panel10.Controls.Add(this.textBox11);
+            this.panel10.Location = new System.Drawing.Point(604, 378);
+            this.panel10.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Padding = new System.Windows.Forms.Padding(1);
+            this.panel10.Size = new System.Drawing.Size(178, 369);
+            this.panel10.TabIndex = 59;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.button15);
+            this.panel11.Controls.Add(this.checkedListBox8);
+            this.panel11.Controls.Add(this.textBox12);
+            this.panel11.Location = new System.Drawing.Point(802, 378);
+            this.panel11.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel11.Name = "panel11";
+            this.panel11.Padding = new System.Windows.Forms.Padding(1);
+            this.panel11.Size = new System.Drawing.Size(178, 369);
+            this.panel11.TabIndex = 60;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.button16);
+            this.panel12.Controls.Add(this.checkedListBox10);
+            this.panel12.Controls.Add(this.textBox13);
+            this.panel12.Location = new System.Drawing.Point(10, 378);
+            this.panel12.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel12.Name = "panel12";
+            this.panel12.Padding = new System.Windows.Forms.Padding(1);
+            this.panel12.Size = new System.Drawing.Size(178, 369);
+            this.panel12.TabIndex = 61;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.button3);
+            this.panel13.Controls.Add(this.button4);
+            this.panel13.Controls.Add(this.button5);
+            this.panel13.Location = new System.Drawing.Point(1000, 378);
+            this.panel13.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(178, 369);
+            this.panel13.TabIndex = 62;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.Controls.Add(this.panel2);
+            this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Controls.Add(this.panel4);
+            this.flowLayoutPanel1.Controls.Add(this.panel5);
+            this.flowLayoutPanel1.Controls.Add(this.panel6);
+            this.flowLayoutPanel1.Controls.Add(this.panel7);
+            this.flowLayoutPanel1.Controls.Add(this.panel12);
+            this.flowLayoutPanel1.Controls.Add(this.panel8);
+            this.flowLayoutPanel1.Controls.Add(this.panel9);
+            this.flowLayoutPanel1.Controls.Add(this.panel10);
+            this.flowLayoutPanel1.Controls.Add(this.panel11);
+            this.flowLayoutPanel1.Controls.Add(this.panel13);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(5, 98);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1200, 769);
+            this.flowLayoutPanel1.TabIndex = 63;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1196, 869);
-            this.Controls.Add(this.button16);
-            this.Controls.Add(this.button15);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.checkedListBox11);
-            this.Controls.Add(this.checkedListBox10);
-            this.Controls.Add(this.checkedListBox9);
-            this.Controls.Add(this.checkedListBox8);
-            this.Controls.Add(this.checkedListBox7);
-            this.Controls.Add(this.checkedListBox5);
-            this.Controls.Add(this.checkedListBox6);
-            this.Controls.Add(this.checkedListBox3);
-            this.Controls.Add(this.checkedListBox4);
-            this.Controls.Add(this.checkedListBox2);
-            this.Controls.Add(this.checkedListBox1);
+            this.ClientSize = new System.Drawing.Size(1218, 869);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Starlit Compiler";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -619,6 +825,20 @@ namespace Starlit_Compiler
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 
