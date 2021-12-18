@@ -281,6 +281,10 @@ namespace Starlit_Compiler
                 }
             }
             await Task.WhenAll(downloadTasks.Select(t => t.Task));
+            foreach (var downloadTask in downloadTasks)
+            {
+                downloadTask.Dispose();
+            }
             stopwatch.Stop();
             lblProgress.Text = $"Done!        {lblProgress.Text}        {stopwatch.ElapsedMilliseconds / 1000.0f} seconds";
         }
