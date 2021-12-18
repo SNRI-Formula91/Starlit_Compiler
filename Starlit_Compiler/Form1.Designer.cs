@@ -92,6 +92,7 @@ namespace Starlit_Compiler
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblProgress = new System.Windows.Forms.Label();
             this.pnlProgress = new System.Windows.Forms.Panel();
+            this.btnConvertCsv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -260,7 +261,7 @@ namespace Starlit_Compiler
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1, 70);
+            this.button3.Location = new System.Drawing.Point(1, 3);
             this.button3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(117, 24);
@@ -271,7 +272,7 @@ namespace Starlit_Compiler
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1, 100);
+            this.button4.Location = new System.Drawing.Point(1, 33);
             this.button4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(117, 24);
@@ -282,12 +283,12 @@ namespace Starlit_Compiler
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1, 130);
+            this.button5.Location = new System.Drawing.Point(1, 92);
             this.button5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(117, 23);
             this.button5.TabIndex = 17;
-            this.button5.Text = "Only Update UI";
+            this.button5.Text = "Create .pak";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -711,6 +712,7 @@ namespace Starlit_Compiler
             // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.btnConvertCsv);
             this.panel13.Controls.Add(this.button3);
             this.panel13.Controls.Add(this.button4);
             this.panel13.Controls.Add(this.button5);
@@ -769,6 +771,17 @@ namespace Starlit_Compiler
             this.pnlProgress.Size = new System.Drawing.Size(812, 29);
             this.pnlProgress.TabIndex = 63;
             this.pnlProgress.Visible = false;
+            // 
+            // btnConvertCsv
+            // 
+            this.btnConvertCsv.Location = new System.Drawing.Point(1, 63);
+            this.btnConvertCsv.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.btnConvertCsv.Name = "btnConvertCsv";
+            this.btnConvertCsv.Size = new System.Drawing.Size(117, 23);
+            this.btnConvertCsv.TabIndex = 18;
+            this.btnConvertCsv.Text = "Convert CSVs";
+            this.btnConvertCsv.UseVisualStyleBackColor = true;
+            this.btnConvertCsv.Click += new System.EventHandler(this.btnConvertCsv_Click);
             // 
             // Form1
             // 
@@ -877,6 +890,7 @@ namespace Starlit_Compiler
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label lblProgress;
         private System.Windows.Forms.Panel pnlProgress;
+        private System.Windows.Forms.Button btnConvertCsv;
     }
 }
 
