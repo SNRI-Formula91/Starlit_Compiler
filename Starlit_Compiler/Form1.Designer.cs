@@ -740,7 +740,7 @@ namespace Starlit_Compiler
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 64);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(812, 504);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(812, 490);
             this.flowLayoutPanel1.TabIndex = 63;
             // 
             // progressBar1
@@ -764,7 +764,7 @@ namespace Starlit_Compiler
             this.pnlProgress.Controls.Add(this.lblProgress);
             this.pnlProgress.Controls.Add(this.progressBar1);
             this.pnlProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlProgress.Location = new System.Drawing.Point(0, 573);
+            this.pnlProgress.Location = new System.Drawing.Point(0, 559);
             this.pnlProgress.Name = "pnlProgress";
             this.pnlProgress.Size = new System.Drawing.Size(812, 29);
             this.pnlProgress.TabIndex = 63;
@@ -775,7 +775,7 @@ namespace Starlit_Compiler
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(812, 602);
+            this.ClientSize = new System.Drawing.Size(812, 588);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlProgress);

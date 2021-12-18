@@ -258,11 +258,11 @@ namespace Starlit_Compiler
                     DownloadTask downloadTask = new DownloadTask(csvMetadata.FileUrl, textBox1.Text + csvMetadata.FilePath);
                     downloadTask.ProgressChanged += DownloadProgressChanged;
                     downloadTasks.Add(downloadTask);
-                    await downloadTask.Task;
                 }
             }
+            await Task.WhenAll(downloadTasks.Select(t => t.Task));
             stopwatch.Stop();
-            lblProgress.Text = $"Done!        {lblProgress.Text};        {stopwatch.ElapsedMilliseconds / 1000.0f} seconds";
+            lblProgress.Text = $"Done!        {lblProgress.Text}        {stopwatch.ElapsedMilliseconds / 1000.0f} seconds";
         }
 
         private void DownloadProgressChanged()
@@ -270,7 +270,7 @@ namespace Starlit_Compiler
             int taskCount = downloadTasks.Count;
             int completedCount = downloadTasks.Where(t => t.Completed).Count();
             long received = downloadTasks.Select(t => t.BytesReceived).Sum();
-            lblProgress.Text = $"{completedCount}/{taskCount} files;        {received / 1024} KB";
+            lblProgress.Text = $"{completedCount}/{taskCount} files        {received / 1024} KB";
             progressBar1.Value = (100 * completedCount) / taskCount;
         }
     }
