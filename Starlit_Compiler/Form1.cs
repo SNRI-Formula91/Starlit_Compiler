@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
@@ -10,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net;
 
 namespace Starlit_Compiler
 {
@@ -242,21 +240,38 @@ namespace Starlit_Compiler
             button5.Enabled = true;
         }
 
-        private void DownloadFiles(bool downloadAll)
+        private List<DownloadTask> downloadTasks;
+
+        private async void DownloadFiles(bool downloadAll)
         {
-            using (WebClient webClient = new WebClient())
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            pnlProgress.Visible = true;
+            downloadTasks = new List<DownloadTask>();
+            foreach (var csvMetadata in CommuFile.data)
             {
-                foreach (var csvMetadata in CommuFile.data)
+                CheckedListBox listBox = listBoxes[csvMetadata.Category];
+                int index = listBox.FindStringExact(csvMetadata.Label);
+                if (!string.IsNullOrEmpty(csvMetadata.FileUrl) && 
+                    (downloadAll || listBox.GetItemCheckState(index) == CheckState.Checked))
                 {
-                    CheckedListBox listBox = listBoxes[csvMetadata.Category];
-                    int index = listBox.FindStringExact(csvMetadata.Label);
-                    if (!string.IsNullOrEmpty(csvMetadata.FileUrl) && 
-                        (downloadAll || listBox.GetItemCheckState(index) == CheckState.Checked))
-                    {
-                        webClient.DownloadFile(csvMetadata.FileUrl, textBox1.Text + csvMetadata.FilePath);
-                    }
+                    DownloadTask downloadTask = new DownloadTask(csvMetadata.FileUrl, textBox1.Text + csvMetadata.FilePath);
+                    downloadTask.ProgressChanged += DownloadProgressChanged;
+                    downloadTasks.Add(downloadTask);
+                    await downloadTask.Task;
                 }
             }
+            stopwatch.Stop();
+            lblProgress.Text = $"Done!        {lblProgress.Text};        {stopwatch.ElapsedMilliseconds / 1000.0f} seconds";
+        }
+
+        private void DownloadProgressChanged()
+        {
+            int taskCount = downloadTasks.Count;
+            int completedCount = downloadTasks.Where(t => t.Completed).Count();
+            long received = downloadTasks.Select(t => t.BytesReceived).Sum();
+            lblProgress.Text = $"{completedCount}/{taskCount} files;        {received / 1024} KB";
+            progressBar1.Value = (100 * completedCount) / taskCount;
         }
     }
 }
