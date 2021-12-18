@@ -74,7 +74,7 @@ namespace Starlit_Compiler
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to download every file?", "Confirmation", 
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning); 
@@ -83,11 +83,11 @@ namespace Starlit_Compiler
                 return;
             }
             DisableAllUpdates();
-            DownloadFiles(true);
+            await DownloadFiles(true);
             EnableAllUpdates();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private async void button4_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Download selected commus?", "Confirmation",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -96,7 +96,7 @@ namespace Starlit_Compiler
                 return;
             }
             DisableAllUpdates();
-            DownloadFiles(false);
+            await DownloadFiles(false);
             EnableAllUpdates();
         }
 
@@ -147,28 +147,19 @@ namespace Starlit_Compiler
 
         private void DisableAllUpdates()
         {
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button5.Enabled = false;
-            btnConvertCsv.Enabled = false;
+            Enabled = false;
         }
 
         private void EnableAllUpdates()
         {
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            btnConvertCsv.Enabled = true;
+            Enabled = true;
         }
 
-        private List<DownloadTask> downloadTasks;
-
-        private async void DownloadFiles(bool downloadAll)
+        private async Task DownloadFiles(bool downloadAll)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            pnlProgress.Visible = true;
-            downloadTasks = new List<DownloadTask>();
+            List<DownloadTask> downloadTasks = new List<DownloadTask>();
             foreach (var csvMetadata in CommuFile.data)
             {
                 MultiCheckList listBox = listBoxes[csvMetadata.Category];
@@ -176,7 +167,7 @@ namespace Starlit_Compiler
                     (downloadAll || listBox.IsChecked(csvMetadata.Label)))
                 {
                     DownloadTask downloadTask = new DownloadTask(csvMetadata.FileUrl, textBox1.Text + csvMetadata.FilePath);
-                    downloadTask.ProgressChanged += DownloadProgressChanged;
+                    downloadTask.ProgressChanged += () => DownloadProgressChanged(downloadTasks);
                     downloadTasks.Add(downloadTask);
                 }
             }
@@ -186,16 +177,16 @@ namespace Starlit_Compiler
                 downloadTask.Dispose();
             }
             stopwatch.Stop();
-            lblProgress.Text = $"Done!        {lblProgress.Text}        {stopwatch.ElapsedMilliseconds / 1000.0f} seconds";
+            progressLabel.Text = $"Done!        {progressLabel.Text}        {stopwatch.ElapsedMilliseconds / 1000.0f} seconds";
         }
 
-        private void DownloadProgressChanged()
+        private void DownloadProgressChanged(List<DownloadTask> downloadTasks)
         {
             int taskCount = downloadTasks.Count;
             int completedCount = downloadTasks.Where(t => t.Completed).Count();
             long received = downloadTasks.Select(t => t.BytesReceived).Sum();
-            lblProgress.Text = $"{completedCount}/{taskCount} files        {received / 1024} KB";
-            progressBar1.Value = (100 * completedCount) / taskCount;
+            progressLabel.Text = $"{completedCount}/{taskCount} files        {received / 1024} KB";
+            progressBar.Value = (100 * completedCount) / taskCount;
         }
     }
 }

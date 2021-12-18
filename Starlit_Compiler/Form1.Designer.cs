@@ -46,13 +46,13 @@ namespace Starlit_Compiler
             this.panel13 = new System.Windows.Forms.Panel();
             this.btnConvertCsv = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.lblProgress = new System.Windows.Forms.Label();
-            this.pnlProgress = new System.Windows.Forms.Panel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.progressLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel13.SuspendLayout();
-            this.pnlProgress.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -62,7 +62,7 @@ namespace Starlit_Compiler
             this.textBox1.Location = new System.Drawing.Point(3, 5);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(820, 20);
+            this.textBox1.Size = new System.Drawing.Size(828, 20);
             this.textBox1.TabIndex = 11;
             // 
             // textBox2
@@ -72,13 +72,13 @@ namespace Starlit_Compiler
             this.textBox2.Location = new System.Drawing.Point(3, 31);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(820, 20);
+            this.textBox2.Size = new System.Drawing.Size(828, 20);
             this.textBox2.TabIndex = 12;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(829, 0);
+            this.button1.Location = new System.Drawing.Point(837, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 23);
@@ -91,7 +91,7 @@ namespace Starlit_Compiler
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(829, 29);
+            this.button2.Location = new System.Drawing.Point(837, 29);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 23);
@@ -148,7 +148,7 @@ namespace Starlit_Compiler
             this.panel1.Location = new System.Drawing.Point(8, 8);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(946, 52);
+            this.panel1.Size = new System.Drawing.Size(954, 52);
             this.panel1.TabIndex = 52;
             // 
             // panel13
@@ -158,7 +158,7 @@ namespace Starlit_Compiler
             this.panel13.Controls.Add(this.button3);
             this.panel13.Controls.Add(this.button4);
             this.panel13.Controls.Add(this.button5);
-            this.panel13.Location = new System.Drawing.Point(837, 64);
+            this.panel13.Location = new System.Drawing.Point(845, 64);
             this.panel13.Margin = new System.Windows.Forms.Padding(7, 2, 7, 2);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(119, 240);
@@ -185,46 +185,42 @@ namespace Starlit_Compiler
             this.flowLayoutPanel1.Location = new System.Drawing.Point(8, 64);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(827, 548);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(835, 535);
             this.flowLayoutPanel1.TabIndex = 63;
             // 
-            // progressBar1
+            // statusStrip1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(3, 3);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(113, 23);
-            this.progressBar1.TabIndex = 18;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.progressBar,
+            this.progressLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 601);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(970, 22);
+            this.statusStrip1.TabIndex = 64;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // lblProgress
+            // progressBar
             // 
-            this.lblProgress.AutoSize = true;
-            this.lblProgress.Location = new System.Drawing.Point(122, 7);
-            this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(48, 13);
-            this.lblProgress.TabIndex = 19;
-            this.lblProgress.Text = "Progress";
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.progressBar.Size = new System.Drawing.Size(120, 16);
             // 
-            // pnlProgress
+            // progressLabel
             // 
-            this.pnlProgress.Controls.Add(this.lblProgress);
-            this.pnlProgress.Controls.Add(this.progressBar1);
-            this.pnlProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlProgress.Location = new System.Drawing.Point(0, 617);
-            this.pnlProgress.Name = "pnlProgress";
-            this.pnlProgress.Size = new System.Drawing.Size(962, 29);
-            this.pnlProgress.TabIndex = 63;
-            this.pnlProgress.Visible = false;
+            this.progressLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.progressLabel.Name = "progressLabel";
+            this.progressLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(962, 646);
+            this.ClientSize = new System.Drawing.Size(970, 623);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel13);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlProgress);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Starlit Compiler";
@@ -232,9 +228,10 @@ namespace Starlit_Compiler
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel13.ResumeLayout(false);
-            this.pnlProgress.ResumeLayout(false);
-            this.pnlProgress.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -252,10 +249,10 @@ namespace Starlit_Compiler
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label lblProgress;
-        private System.Windows.Forms.Panel pnlProgress;
         private System.Windows.Forms.Button btnConvertCsv;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripProgressBar progressBar;
+        private System.Windows.Forms.ToolStripStatusLabel progressLabel;
     }
 }
 
