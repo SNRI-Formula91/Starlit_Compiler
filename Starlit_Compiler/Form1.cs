@@ -27,18 +27,35 @@ namespace Starlit_Compiler
             {
                 this.textBox2.Text = ConfigurationManager.AppSettings["commukitPath"];
             }
-            checkedListBox1.CheckOnClick = true;
-            checkedListBox2.CheckOnClick = true;
-            checkedListBox3.CheckOnClick = true;
-            checkedListBox4.CheckOnClick = true;
-            checkedListBox5.CheckOnClick = true;
-            checkedListBox6.CheckOnClick = true;
-            checkedListBox7.CheckOnClick = true;
-            checkedListBox8.CheckOnClick = true;
-            checkedListBox9.CheckOnClick = true;
-            checkedListBox10.CheckOnClick = true;
-            checkedListBox11.CheckOnClick = true;
+            listBoxes = new Dictionary<string, CheckedListBox>()
+            {
+                { "765AS Commus", checkedListBox1 },
+                { "765AS Work+Events", checkedListBox2 },
+                { "CG/ML Work+Events", checkedListBox3 },
+                { "CG/ML Commus", checkedListBox4 },
+                { "SC/Other Work+Events", checkedListBox5 },
+                { "SC/Other Commus", checkedListBox6 },
+                { "Main Story", checkedListBox7 },
+                { "NPC Dialogue+Commus", checkedListBox8 },
+                { "Game Events", checkedListBox9 },
+                { "Other", checkedListBox10 },
+                { "DLC", checkedListBox11 },
+            };
+            foreach (CommuFile csvMetadata in CommuFile.data)
+            {
+                CheckedListBox listBox = listBoxes[csvMetadata.Category];
+                if (!listBox.Items.Contains(csvMetadata.Label))
+                {
+                    listBox.Items.Add(csvMetadata.Label);
+                }
+            }
+            foreach (CheckedListBox listBox in listBoxes.Values)
+            {
+                listBox.CheckOnClick = true;
+            }
         }
+
+        private readonly Dictionary<string, CheckedListBox> listBoxes;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -225,219 +242,19 @@ namespace Starlit_Compiler
             button5.Enabled = true;
         }
 
-        private void CreateTempBatch(string path)
-        {
-            using (StreamWriter quickUpdater = new StreamWriter(path))
-            {
-                quickUpdater.WriteLine("@echo on");
-                quickUpdater.WriteLine("call :QUICK_UPDATE > \"%cd%\\quick_update.log\"");
-                quickUpdater.WriteLine("exit /B");
-                quickUpdater.WriteLine("");
-                quickUpdater.WriteLine(":QUICK_UPDATE");
-                quickUpdater.WriteLine("ECHO Downloading Commu files... &ECHO.");
-
-                foreach (CommuFile checkedItem in checkedListBox1.CheckedItems)
-                {
-                    quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                }
-                foreach (CommuFile checkedItem in checkedListBox2.CheckedItems)
-                {
-                    quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                }
-                foreach (CommuFile checkedItem in checkedListBox3.CheckedItems)
-                {
-                    if (checkedItem.FileUrl != "NULL")
-                    {
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                    }
-                }
-                foreach (CommuFile checkedItem in checkedListBox4.CheckedItems)
-                {
-                    if (checkedItem.FileUrl != "NULL")
-                    {
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                    }
-                }
-                foreach (CommuFile checkedItem in checkedListBox5.CheckedItems)
-                {
-                    if (checkedItem.FileUrl != "NULL")
-                    {
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                    }
-                }
-                foreach (CommuFile checkedItem in checkedListBox6.CheckedItems)
-                {
-                    if (checkedItem.FileUrl != "NULL")
-                    {
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                    }
-                }
-                foreach (CommuFile checkedItem in checkedListBox7.CheckedItems)
-                {
-                    quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                }
-                foreach (CommuFile checkedItem in checkedListBox8.CheckedItems)
-                {
-                    quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                }
-                foreach (CommuFile checkedItem in checkedListBox9.CheckedItems)
-                {
-                    quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                }
-                foreach (CommuFile checkedItem in checkedListBox10.CheckedItems)
-                {
-                    if (checkedItem.FileUrl == "NONE")
-                    {
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\CML_GameOver000.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=0&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0004_02.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1715384074&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0004_03.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1371257039&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0004_04.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=369414826&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0005_01.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1972035438&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0005_02.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=278063590&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0005_03.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=72203270&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0005_04.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=334270960&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0006_01.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=2130778494&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0006_02.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1750001407&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0006_03.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=65550961&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0006_04.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1402478348&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0007_01.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=2112872985&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0007_02.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=15844309&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0007_03.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=832510217&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0007_04.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1872157724&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0008_03.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=418733638&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0008_04.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1365967696&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0009_01.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=2132832283&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0009_02.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=673985233&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0009_03.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=382643967&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0009_04.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=1603267711&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0010_01.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=1862052712&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0010_02.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=327389709&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0010_03.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=913908743&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0010_04.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=774690158&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0011_01.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=1883115183&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0011_02.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=821216063&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0011_03.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=44231773&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0011_04.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=2030580429&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0012_01.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=1289683929&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0012_02.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=209331563&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0012_03.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=684839089&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0012_04.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=1260893778&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Order\\CML_GameOver_02_0000_00.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=1439123824&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Order\\CML_GameOver_02_0001_00.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=1009020609&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Stage\\CML_GameOver_03_0000_00.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=1441533144&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Stage\\CML_GameOver_03_0001_00.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=311404926&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Stage\\CML_GameOver_03_0002_00.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=319751758&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Stage\\CML_GameOver_03_0003_00.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=1674256&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Stage\\CML_GameOver_03_0004_00.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=455608798&single=true&output=csv\"");
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Task\\CML_GameOver_01_0000_00.csv\" \"https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=983473035&single=true&output=csv\"");
-                    }
-                    else
-                    {
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                    }
-                }
-                foreach (CommuFile checkedItem in checkedListBox11.CheckedItems)
-                {
-                    if (checkedItem.FileUrl != "NULL")
-                    {
-                        quickUpdater.WriteLine("curl -L -o \"" + textBox1.Text + checkedItem.FilePath + "\" \"" + checkedItem.FileUrl + "\"");
-                    }
-                }
-
-                quickUpdater.WriteLine("ECHO Importing Commu translations... &ECHO.");
-                quickUpdater.WriteLine("call Import_UAsset_Updates.bat");
-                quickUpdater.WriteLine("ECHO Updating UI and creating mods... &ECHO.");
-                quickUpdater.WriteLine("call Export_EngPatch.bat");
-            }
-        }
-
         private void DownloadFiles(bool downloadAll)
         {
-            CheckedListBox[] listBoxes =
-               {
-                checkedListBox1,
-                checkedListBox2,
-                checkedListBox3,
-                checkedListBox4,
-                checkedListBox5,
-                checkedListBox6,
-                checkedListBox7,
-                checkedListBox8,
-                checkedListBox9,
-                checkedListBox10,
-                checkedListBox11,
-            };
             using (WebClient webClient = new WebClient())
             {
-                foreach (var listBox in listBoxes)
+                foreach (var csvMetadata in CommuFile.data)
                 {
-                    System.Collections.IEnumerable items;
-                    if (downloadAll)
+                    CheckedListBox listBox = listBoxes[csvMetadata.Category];
+                    int index = listBox.FindStringExact(csvMetadata.Label);
+                    if (!string.IsNullOrEmpty(csvMetadata.FileUrl) && 
+                        (downloadAll || listBox.GetItemCheckState(index) == CheckState.Checked))
                     {
-                        items = listBox.Items;
+                        webClient.DownloadFile(csvMetadata.FileUrl, textBox1.Text + csvMetadata.FilePath);
                     }
-                    else
-                    {
-                        items = listBox.CheckedItems;
-                    }
-
-                    foreach (CommuFile checkedItem in items)
-                    {
-                        if (checkedItem.FileUrl == "NONE")
-                        {
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=0&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\CML_GameOver000.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1715384074&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0004_02.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1371257039&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0004_03.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=369414826&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0004_04.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1972035438&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0005_01.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=278063590&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0005_02.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=72203270&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0005_03.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=334270960&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0005_04.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=2130778494&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0006_01.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1750001407&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0006_02.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=65550961&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0006_03.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1402478348&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0006_04.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=2112872985&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0007_01.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=15844309&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0007_02.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=832510217&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0007_03.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1872157724&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0007_04.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=418733638&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0008_03.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vRl5KECNBZKurkdHkVciJBBWhzdytJx-6XDrWPpL_5d96WrD__X9ipgzWlVSAJB4PeKI98WKTHtLBjq/pub?gid=1365967696&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0008_04.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=2132832283&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0009_01.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=673985233&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0009_02.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=382643967&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0009_03.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=1603267711&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0009_04.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=1862052712&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0010_01.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=327389709&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0010_02.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=913908743&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0010_03.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=774690158&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0010_04.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=1883115183&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0011_01.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=821216063&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0011_02.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=44231773&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0011_03.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=2030580429&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0011_04.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=1289683929&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0012_01.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=209331563&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0012_02.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=684839089&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0012_03.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vTEu7iQTh2EOtKhpRJIrSZZvOwy6dI9pYWw1ABGFdOXE_p8T-1uf7uoPw4VHllRXP3Mei0dOcO2pLwl/pub?gid=1260893778&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Badend\\CML_GameOver_04_0012_04.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=1439123824&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Order\\CML_GameOver_02_0000_00.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=1009020609&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Order\\CML_GameOver_02_0001_00.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=1441533144&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Stage\\CML_GameOver_03_0000_00.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=311404926&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Stage\\CML_GameOver_03_0001_00.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=319751758&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Stage\\CML_GameOver_03_0002_00.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=1674256&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Stage\\CML_GameOver_03_0003_00.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=455608798&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Stage\\CML_GameOver_03_0004_00.csv");
-                            webClient.DownloadFile("https://docs.google.com/spreadsheets/d/e/2PACX-1vQGJB6boiekTXPP801pBPenajqjkuOt4nn57OUuEMDyP0dhq-dMD2BhEowN1VrKWffmWg0BZ2EJ7ajZ/pub?gid=983473035&single=true&output=csv", textBox1.Text + "\\pakchunk99-EngPatch\\StarlitSeason\\Content\\Commu\\Localize\\GameOver\\Task\\CML_GameOver_01_0000_00.csv");
-                        }
-                        else if (checkedItem.FileUrl == "NULL")
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            webClient.DownloadFile(checkedItem.FileUrl, textBox1.Text + checkedItem.FilePath);
-                        }
-                    }
-
                 }
             }
         }
