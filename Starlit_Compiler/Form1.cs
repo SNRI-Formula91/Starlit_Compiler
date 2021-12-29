@@ -17,7 +17,6 @@ namespace Starlit_Compiler
         {
             InitializeComponent();
             WorkspacePath = ConfigurationManager.AppSettings["workspacePath"];
-            CommuKitPath = ConfigurationManager.AppSettings["commukitPath"];
             CsvMetadataString = ConfigurationManager.AppSettings["csvMetadata"];
             checkLists = new Dictionary<string, MultiCheckList>();
             InitialiseCheckListsFromString();
@@ -73,17 +72,6 @@ namespace Starlit_Compiler
                 UpdateConfigs("workspacePath", value);
             }
         }
-        private string CommuKitPath
-        {
-            get => textBox2.Text;
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    return;
-                textBox2.Text = value;
-                UpdateConfigs("commukitPath", value);
-            }
-        }
 
         private string csvMetadataString;
         private string CsvMetadataString
@@ -107,18 +95,6 @@ namespace Starlit_Compiler
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 WorkspacePath = dialog.FileName;
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog("Select Commu-Kit folder.")
-            {
-                IsFolderPicker = true
-            };
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                CommuKitPath = dialog.FileName;
             }
         }
 
