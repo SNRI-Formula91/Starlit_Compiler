@@ -47,6 +47,7 @@ namespace Starlit_Compiler
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.progressLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnFetchMetadata = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -150,6 +151,7 @@ namespace Starlit_Compiler
             // panel13
             // 
             this.panel13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel13.Controls.Add(this.btnFetchMetadata);
             this.panel13.Controls.Add(this.btnConvertCsv);
             this.panel13.Controls.Add(this.button3);
             this.panel13.Controls.Add(this.button4);
@@ -207,6 +209,17 @@ namespace Starlit_Compiler
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(0, 17);
             // 
+            // btnFetchMetadata
+            // 
+            this.btnFetchMetadata.Location = new System.Drawing.Point(1, 175);
+            this.btnFetchMetadata.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.btnFetchMetadata.Name = "btnFetchMetadata";
+            this.btnFetchMetadata.Size = new System.Drawing.Size(117, 23);
+            this.btnFetchMetadata.TabIndex = 10;
+            this.btnFetchMetadata.Text = "Fetch .csv metadata";
+            this.btnFetchMetadata.UseVisualStyleBackColor = true;
+            this.btnFetchMetadata.Click += new System.EventHandler(this.BtnFetchMetadata_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,6 +260,7 @@ namespace Starlit_Compiler
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel progressLabel;
+        private System.Windows.Forms.Button btnFetchMetadata;
     }
 }
 

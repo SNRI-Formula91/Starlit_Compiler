@@ -19,7 +19,18 @@ namespace Starlit_Compiler
             WorkspacePath = ConfigurationManager.AppSettings["workspacePath"];
             CommuKitPath = ConfigurationManager.AppSettings["commukitPath"];
             checkLists = new Dictionary<string, MultiCheckList>();
-            foreach (CommuFile csvMetadata in CommuFile.data)
+            InitialiseCheckLists(CommuFile.data);
+        }
+
+        private void InitialiseCheckLists(IEnumerable<CommuFile> csvMetadatas)
+        {
+            foreach (var multiCheckList in checkLists.Values)
+            {
+                flowLayoutPanel1.Controls.Remove(multiCheckList);
+                multiCheckList.Dispose();
+            }
+            checkLists.Clear();
+            foreach (CommuFile csvMetadata in csvMetadatas)
             {
                 bool hasValue = checkLists.TryGetValue(csvMetadata.Category, out MultiCheckList multiCheckList);
                 if (!hasValue)
@@ -117,6 +128,33 @@ namespace Starlit_Compiler
         private void button5_Click(object sender, EventArgs e)
         {
             RunBatchFile("Export_EngPatch.bat");
+        }
+
+        private async void BtnFetchMetadata_Click(object sender, EventArgs e)
+        {
+            DisableAllUpdates();
+            await FetchMetadata();
+            EnableAllUpdates();
+        }
+
+        private async Task FetchMetadata()
+        {
+            string csvData;
+            using (var webClient = new System.Net.WebClient())
+            {
+                csvData = await webClient.DownloadStringTaskAsync("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWmIqtwbGay6DKz64lY3oz3ttQkXt0j7hOsWGrV3K_AmTATOyzVPm1CPc9jx86WWh4mAUEWNjw18ee/pub?gid=0&single=true&output=csv");
+            }
+            using (var reader = new StringReader(csvData))
+            {
+                using (var csvReader = new CsvHelper.CsvReader(
+                    reader,
+                    new CsvHelper.Configuration.CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture) { MissingFieldFound = null }
+                    ))
+                {
+                    var data = csvReader.GetRecords<CommuFile>();
+                    InitialiseCheckLists(data);
+                }
+            }
         }
 
         private void RunBatchFile(string batchPath)

@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CsvHelper.Configuration.Attributes;
 
 namespace Starlit_Compiler
 {
     public class CommuFile
     {
+        [Name("Category")]
         public string Category { get; set; }
-        public string Label { get; }
-        public string FilePath { get; }
-        public string FileUrl { get; }
+        [Name("Label")]
+        public string Label { get; set; }
+        [Name("Equivalent path")]
+        public string FilePath { get; set; }
+        [Name("Published URL")]
+        public string FileUrl { get; set; }
 
+        public CommuFile() { }
         public CommuFile (string Name, string File, string Url)
         {
             Label = Name;
