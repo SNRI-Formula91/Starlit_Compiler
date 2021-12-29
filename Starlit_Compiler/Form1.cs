@@ -18,11 +18,27 @@ namespace Starlit_Compiler
             InitializeComponent();
             WorkspacePath = ConfigurationManager.AppSettings["workspacePath"];
             CommuKitPath = ConfigurationManager.AppSettings["commukitPath"];
+            CsvMetadataString = ConfigurationManager.AppSettings["csvMetadata"];
             checkLists = new Dictionary<string, MultiCheckList>();
-            InitialiseCheckLists(CommuFile.data);
+            InitialiseCheckListsFromString();
         }
 
-        private void InitialiseCheckLists(IEnumerable<CommuFile> csvMetadatas)
+        private void InitialiseCheckListsFromString()
+        {
+            using (var reader = new StringReader(CsvMetadataString))
+            {
+                using (var csvReader = new CsvHelper.CsvReader(
+                    reader,
+                    new CsvHelper.Configuration.CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture) { MissingFieldFound = null }
+                    ))
+                {
+                    csvMetadata = csvReader.GetRecords<CommuFile>().ToArray();
+                    InitialiseCheckListsFromArray();
+                }
+            }
+        }
+
+        private void InitialiseCheckListsFromArray()
         {
             foreach (var multiCheckList in checkLists.Values)
             {
@@ -30,18 +46,18 @@ namespace Starlit_Compiler
                 multiCheckList.Dispose();
             }
             checkLists.Clear();
-            foreach (CommuFile csvMetadata in csvMetadatas)
+            foreach (CommuFile record in csvMetadata)
             {
-                bool hasValue = checkLists.TryGetValue(csvMetadata.Category, out MultiCheckList multiCheckList);
+                bool hasValue = checkLists.TryGetValue(record.Category, out MultiCheckList multiCheckList);
                 if (!hasValue)
                 {
-                    multiCheckList = new MultiCheckList() { Title = csvMetadata.Category };
-                    checkLists.Add(csvMetadata.Category, multiCheckList);
+                    multiCheckList = new MultiCheckList() { Title = record.Category };
+                    checkLists.Add(record.Category, multiCheckList);
                     flowLayoutPanel1.Controls.Add(multiCheckList);
                 }
-                if (!multiCheckList.Items.Contains(csvMetadata.Label))
+                if (!multiCheckList.Items.Contains(record.Label))
                 {
-                    multiCheckList.Items.Add(csvMetadata.Label);
+                    multiCheckList.Items.Add(record.Label);
                 }
             }
         }
@@ -68,6 +84,18 @@ namespace Starlit_Compiler
                 UpdateConfigs("commukitPath", value);
             }
         }
+
+        private string csvMetadataString;
+        private string CsvMetadataString
+        {
+            get => csvMetadataString;
+            set
+            {
+                csvMetadataString = value;
+                UpdateConfigs("csvMetadata", value);
+            }
+        }
+        private CommuFile[] csvMetadata;
         private readonly Dictionary<string, MultiCheckList> checkLists;
 
         private void button1_Click(object sender, EventArgs e)
@@ -139,22 +167,11 @@ namespace Starlit_Compiler
 
         private async Task FetchMetadata()
         {
-            string csvData;
             using (var webClient = new System.Net.WebClient())
             {
-                csvData = await webClient.DownloadStringTaskAsync("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWmIqtwbGay6DKz64lY3oz3ttQkXt0j7hOsWGrV3K_AmTATOyzVPm1CPc9jx86WWh4mAUEWNjw18ee/pub?gid=0&single=true&output=csv");
+                CsvMetadataString = await webClient.DownloadStringTaskAsync("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWmIqtwbGay6DKz64lY3oz3ttQkXt0j7hOsWGrV3K_AmTATOyzVPm1CPc9jx86WWh4mAUEWNjw18ee/pub?gid=0&single=true&output=csv");
             }
-            using (var reader = new StringReader(csvData))
-            {
-                using (var csvReader = new CsvHelper.CsvReader(
-                    reader,
-                    new CsvHelper.Configuration.CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture) { MissingFieldFound = null }
-                    ))
-                {
-                    var data = csvReader.GetRecords<CommuFile>();
-                    InitialiseCheckLists(data);
-                }
-            }
+            InitialiseCheckListsFromString();
         }
 
         private void RunBatchFile(string batchPath)
@@ -199,13 +216,13 @@ namespace Starlit_Compiler
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             List<DownloadTask> downloadTasks = new List<DownloadTask>();
-            foreach (var csvMetadata in CommuFile.data)
+            foreach (CommuFile record in csvMetadata)
             {
-                MultiCheckList checkList = checkLists[csvMetadata.Category];
-                if (!string.IsNullOrEmpty(csvMetadata.FileUrl) && 
-                    (downloadAll || checkList.IsChecked(csvMetadata.Label)))
+                MultiCheckList checkList = checkLists[record.Category];
+                if (!string.IsNullOrEmpty(record.FileUrl) && 
+                    (downloadAll || checkList.IsChecked(record.Label)))
                 {
-                    DownloadTask downloadTask = new DownloadTask(csvMetadata.FileUrl, WorkspacePath + csvMetadata.FilePath);
+                    DownloadTask downloadTask = new DownloadTask(record.FileUrl, WorkspacePath + record.FilePath);
                     downloadTask.ProgressChanged += () => DownloadProgressChanged(downloadTasks);
                     downloadTasks.Add(downloadTask);
                 }
