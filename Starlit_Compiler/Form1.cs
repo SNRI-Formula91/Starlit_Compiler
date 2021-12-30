@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -55,19 +56,24 @@ namespace Starlit_Compiler
             checkLists.Clear();
             foreach (CommuFile record in csvMetadata)
             {
-                bool hasValue = checkLists.TryGetValue(record.Category, out MultiCheckList multiCheckList);
-                if (!hasValue)
+                if (urlRegex.IsMatch(record.FileUrl))
                 {
-                    multiCheckList = new MultiCheckList() { Title = record.Category };
-                    checkLists.Add(record.Category, multiCheckList);
-                    flowLayoutPanel1.Controls.Add(multiCheckList);
-                }
-                if (!multiCheckList.Items.Contains(record.Label))
-                {
-                    multiCheckList.Items.Add(record.Label);
+                    bool hasValue = checkLists.TryGetValue(record.Category, out MultiCheckList multiCheckList);
+                    if (!hasValue)
+                    {
+                        multiCheckList = new MultiCheckList() { Title = record.Category };
+                        checkLists.Add(record.Category, multiCheckList);
+                        flowLayoutPanel1.Controls.Add(multiCheckList);
+                    }
+                    if (!multiCheckList.Items.Contains(record.Label))
+                    {
+                        multiCheckList.Items.Add(record.Label);
+                    }
                 }
             }
         }
+
+        private readonly Regex urlRegex = new Regex(@"^https://docs.google.com/spreadsheets/d/e/[0-9A-Za-z\-_]{86}/pub\?gid=[0-9]+&single=true&output=csv$");
 
         private string WorkspacePath
         {
@@ -214,8 +220,7 @@ namespace Starlit_Compiler
             foreach (CommuFile record in csvMetadata)
             {
                 MultiCheckList checkList = checkLists[record.Category];
-                if (!string.IsNullOrEmpty(record.FileUrl) && 
-                    (downloadAll || checkList.IsChecked(record.Label)))
+                if (downloadAll || checkList.IsChecked(record.Label))
                 {
                     DownloadTask downloadTask = new DownloadTask(record.FileUrl, WorkspacePath + record.FilePath);
                     downloadTask.ProgressChanged += () => DownloadProgressChanged(downloadTasks);
