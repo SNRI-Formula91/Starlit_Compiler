@@ -42,7 +42,7 @@ namespace Starlit_Compiler
                     new CsvHelper.Configuration.CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture) { MissingFieldFound = null }
                     ))
                 {
-                    csvMetadata = csvReader.GetRecords<CommuFile>().ToArray();
+                    csvMetadata = csvReader.GetRecords<CommuFile>().Where(record => urlRegex.IsMatch(record.FileUrl)).ToArray();
                 }
             }
         }
@@ -57,19 +57,16 @@ namespace Starlit_Compiler
             checkLists.Clear();
             foreach (CommuFile record in csvMetadata)
             {
-                if (urlRegex.IsMatch(record.FileUrl))
+                bool hasValue = checkLists.TryGetValue(record.Category, out MultiCheckList multiCheckList);
+                if (!hasValue)
                 {
-                    bool hasValue = checkLists.TryGetValue(record.Category, out MultiCheckList multiCheckList);
-                    if (!hasValue)
-                    {
-                        multiCheckList = new MultiCheckList() { Title = record.Category };
-                        checkLists.Add(record.Category, multiCheckList);
-                        flowLayoutPanel1.Controls.Add(multiCheckList);
-                    }
-                    if (!multiCheckList.Items.Contains(record.Label))
-                    {
-                        multiCheckList.Items.Add(record.Label);
-                    }
+                    multiCheckList = new MultiCheckList() { Title = record.Category };
+                    checkLists.Add(record.Category, multiCheckList);
+                    flowLayoutPanel1.Controls.Add(multiCheckList);
+                }
+                if (!multiCheckList.Items.Contains(record.Label))
+                {
+                    multiCheckList.Items.Add(record.Label);
                 }
             }
         }
