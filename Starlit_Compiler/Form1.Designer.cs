@@ -46,6 +46,8 @@ namespace Starlit_Compiler
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.progressLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtMetadataUrl = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -114,6 +116,9 @@ namespace Starlit_Compiler
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnFetchMetadata);
+            this.panel1.Controls.Add(this.txtMetadataUrl);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(8, 8);
@@ -125,7 +130,6 @@ namespace Starlit_Compiler
             // panel13
             // 
             this.panel13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel13.Controls.Add(this.btnFetchMetadata);
             this.panel13.Controls.Add(this.btnConvertCsv);
             this.panel13.Controls.Add(this.button3);
             this.panel13.Controls.Add(this.button4);
@@ -138,7 +142,8 @@ namespace Starlit_Compiler
             // 
             // btnFetchMetadata
             // 
-            this.btnFetchMetadata.Location = new System.Drawing.Point(1, 175);
+            this.btnFetchMetadata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFetchMetadata.Location = new System.Drawing.Point(837, 30);
             this.btnFetchMetadata.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.btnFetchMetadata.Name = "btnFetchMetadata";
             this.btnFetchMetadata.Size = new System.Drawing.Size(117, 23);
@@ -194,6 +199,25 @@ namespace Starlit_Compiler
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(0, 17);
             // 
+            // txtMetadataUrl
+            // 
+            this.txtMetadataUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMetadataUrl.Location = new System.Drawing.Point(114, 31);
+            this.txtMetadataUrl.Name = "txtMetadataUrl";
+            this.txtMetadataUrl.Size = new System.Drawing.Size(719, 20);
+            this.txtMetadataUrl.TabIndex = 3;
+            this.txtMetadataUrl.TextChanged += new System.EventHandler(this.TxtMetadataUrl_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "CSV Metadata URL:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,6 +257,8 @@ namespace Starlit_Compiler
         private System.Windows.Forms.ToolStripProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel progressLabel;
         private System.Windows.Forms.Button btnFetchMetadata;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtMetadataUrl;
     }
 }
 

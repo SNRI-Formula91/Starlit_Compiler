@@ -18,6 +18,7 @@ namespace Starlit_Compiler
         {
             InitializeComponent();
             WorkspacePath = ConfigurationManager.AppSettings["workspacePath"];
+            txtMetadataUrl.Text = ConfigurationManager.AppSettings["metadataUrl"];
             CsvMetadataString = ConfigurationManager.AppSettings["csvMetadata"];
             checkLists = new Dictionary<string, MultiCheckList>();
             try
@@ -87,6 +88,9 @@ namespace Starlit_Compiler
             }
         }
 
+        private string MetadataUrl => txtMetadataUrl.Text;
+        private bool MetadataUrlIsValid => urlRegex.IsMatch(MetadataUrl);
+
         private string csvMetadataString;
         private string CsvMetadataString
         {
@@ -148,11 +152,23 @@ namespace Starlit_Compiler
             RunBatchFile("Export_EngPatch.bat");
         }
 
+        private void TxtMetadataUrl_TextChanged(object sender, EventArgs e)
+        {
+            txtMetadataUrl.ForeColor = MetadataUrlIsValid ? System.Drawing.SystemColors.WindowText : System.Drawing.SystemColors.GrayText;
+            btnFetchMetadata.Enabled = MetadataUrlIsValid;
+        }
+
         private async void BtnFetchMetadata_Click(object sender, EventArgs e)
         {
-            DisableAllUpdates();
-            await FetchMetadata();
-            EnableAllUpdates();
+            if (MetadataUrlIsValid)
+            {
+                DisableAllUpdates();
+                progressLabel.Text = "Fetching metadata...";
+                await FetchMetadata();
+                UpdateConfigs("metadataUrl", MetadataUrl);
+                progressLabel.Text = "Finished fetching metadata.";
+                EnableAllUpdates();
+            }
         }
 
         private async Task FetchMetadata()
@@ -160,7 +176,7 @@ namespace Starlit_Compiler
             string metadataString;
             using (var webClient = new System.Net.WebClient())
             {
-                metadataString = await webClient.DownloadStringTaskAsync("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWmIqtwbGay6DKz64lY3oz3ttQkXt0j7hOsWGrV3K_AmTATOyzVPm1CPc9jx86WWh4mAUEWNjw18ee/pub?gid=0&single=true&output=csv");
+                metadataString = await webClient.DownloadStringTaskAsync(MetadataUrl);
             }
             try
             {
