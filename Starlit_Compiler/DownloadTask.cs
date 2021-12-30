@@ -1,62 +1,37 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Threading.Tasks;
-using System.Net;
+using System.Net.Http;
+using System.IO;
 
 namespace Starlit_Compiler
 {
-    class DownloadTask : IDisposable
+    class DownloadTask
     {
+        private static readonly HttpClient httpClient = new HttpClient();
         public long BytesReceived { get; private set; } = 0;
-        public long TotalBytes { get; private set; } = 0;
         public bool Completed { get; private set; } = false;
-        public event Action ProgressChanged;
-        private readonly WebClient webClient;
+        public event Action DownloadCompleted;
         public Task Task { get; }
 
         public DownloadTask(string url, string filePath)
         {
-            webClient = new WebClient();
-            webClient.DownloadProgressChanged += ClientDownloadProgressChanged;
-            webClient.DownloadFileCompleted += ClientDownloadFileCompleted;
-            Task = webClient.DownloadFileTaskAsync(url, filePath);
+            Task = DownloadFileAsync(url, filePath);
         }
 
-        private void ClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        private async Task DownloadFileAsync(string url, string filePath)
         {
-            BytesReceived = e.BytesReceived;
-            TotalBytes = e.TotalBytesToReceive;
-            ProgressChanged?.Invoke();
-        }
-        private void ClientDownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            Completed = true;
-            ProgressChanged?.Invoke();
-        }
-
-        // Flag: Has Dispose already been called?
-        bool disposed = false;
-        // Public implementation of Dispose pattern callable by consumers.
-        public void Dispose()
-        {
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
-
-        // Protected implementation of Dispose pattern.
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-
-            if (disposing)
+            var response = await httpClient.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            var dataStream = await response.Content.ReadAsStreamAsync();
+            BytesReceived = dataStream.Length;
+            using (FileStream fileStream = File.Create(filePath))
             {
-                webClient.Dispose();
-                // Free any other managed objects here.
-                //
+                await dataStream.CopyToAsync(fileStream);
             }
-
-            disposed = true;
+            Completed = true;
+            DownloadCompleted?.Invoke();
         }
+
+        public static Task<string> GetStringAsync(string url) => httpClient.GetStringAsync(url);
     }
 }

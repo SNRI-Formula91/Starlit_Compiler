@@ -170,11 +170,7 @@ namespace Starlit_Compiler
 
         private async Task FetchMetadata()
         {
-            string metadataString;
-            using (var webClient = new System.Net.WebClient())
-            {
-                metadataString = await webClient.DownloadStringTaskAsync(MetadataUrl);
-            }
+            string metadataString = await DownloadTask.GetStringAsync(MetadataUrl);
             try
             {
                 ConvertMetadataStringToArray(metadataString);
@@ -236,15 +232,11 @@ namespace Starlit_Compiler
                 if (downloadAll || checkList.IsChecked(record.Label))
                 {
                     DownloadTask downloadTask = new DownloadTask(record.FileUrl, WorkspacePath + record.FilePath);
-                    downloadTask.ProgressChanged += () => DownloadProgressChanged(downloadTasks);
+                    downloadTask.DownloadCompleted += () => DownloadProgressChanged(downloadTasks);
                     downloadTasks.Add(downloadTask);
                 }
             }
             await Task.WhenAll(downloadTasks.Select(t => t.Task));
-            foreach (var downloadTask in downloadTasks)
-            {
-                downloadTask.Dispose();
-            }
             stopwatch.Stop();
             progressLabel.Text = $"Done!        {progressLabel.Text}        {stopwatch.ElapsedMilliseconds / 1000.0f} seconds";
         }
