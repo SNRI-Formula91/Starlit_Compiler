@@ -122,7 +122,14 @@ namespace Starlit_Compiler
                 return;
             }
             DisableAllUpdates();
-            await DownloadFiles(true);
+            try
+            {
+                await DownloadFiles(true);
+            }
+            catch
+            {
+                ReportError("An error occured during download.");
+            }
             EnableAllUpdates();
         }
 
@@ -135,7 +142,14 @@ namespace Starlit_Compiler
                 return;
             }
             DisableAllUpdates();
-            await DownloadFiles(false);
+            try
+            {
+                await DownloadFiles(false);
+            }
+            catch
+            {
+                ReportError("An error occured during download.");
+            }
             EnableAllUpdates();
         }
 
@@ -157,31 +171,35 @@ namespace Starlit_Compiler
 
         private async void BtnFetchMetadata_Click(object sender, EventArgs e)
         {
-            if (MetadataUrlIsValid)
+            if (!MetadataUrlIsValid)
             {
-                DisableAllUpdates();
+                return;
+            }
+            DisableAllUpdates();
+            try
+            {
                 progressLabel.Text = "Fetching metadata...";
                 await FetchMetadata();
                 UpdateConfigs("metadataUrl", MetadataUrl);
                 progressLabel.Text = "Finished fetching metadata.";
-                EnableAllUpdates();
             }
+            catch (System.Net.Http.HttpRequestException)
+            {
+                ReportError("Error fetching metadata.");
+            }
+            catch (CsvHelper.BadDataException)
+            {
+                ReportError("Downloaded metadata could not be successfully parsed.");
+            }
+            EnableAllUpdates();
         }
 
         private async Task FetchMetadata()
         {
             string metadataString = await DownloadTask.GetStringAsync(MetadataUrl);
-            try
-            {
-                ConvertMetadataStringToArray(metadataString);
-                CsvMetadataString = metadataString;
-                InitialiseCheckListsFromArray();
-            }
-            catch (CsvHelper.BadDataException)
-            {
-                MessageBox.Show($"Downloaded metadata could not be successfully parsed.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ConvertMetadataStringToArray(metadataString);
+            CsvMetadataString = metadataString;
+            InitialiseCheckListsFromArray();
         }
 
         private void RunBatchFile(string batchPath)
@@ -248,6 +266,13 @@ namespace Starlit_Compiler
             long received = downloadTasks.Select(t => t.BytesReceived).Sum();
             progressLabel.Text = $"{completedCount}/{taskCount} files        {received / 1024} KB";
             progressBar.Value = 100 * completedCount / taskCount;
+        }
+
+        private void ReportError(string errorText)
+        {
+            progressBar.Value = 0;
+            progressLabel.Text = errorText;
+            MessageBox.Show(errorText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
