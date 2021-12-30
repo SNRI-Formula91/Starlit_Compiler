@@ -19,12 +19,21 @@ namespace Starlit_Compiler
             WorkspacePath = ConfigurationManager.AppSettings["workspacePath"];
             CsvMetadataString = ConfigurationManager.AppSettings["csvMetadata"];
             checkLists = new Dictionary<string, MultiCheckList>();
-            InitialiseCheckListsFromString();
+            try
+            {
+                ConvertMetadataStringToArray(CsvMetadataString);
+            }
+            catch
+            {
+                CsvMetadataString = "";
+                csvMetadata = new CommuFile[] { };
+            }
+            InitialiseCheckListsFromArray();
         }
 
-        private void InitialiseCheckListsFromString()
+        private void ConvertMetadataStringToArray(string metadataString)
         {
-            using (var reader = new StringReader(CsvMetadataString))
+            using (var reader = new StringReader(metadataString))
             {
                 using (var csvReader = new CsvHelper.CsvReader(
                     reader,
@@ -32,7 +41,6 @@ namespace Starlit_Compiler
                     ))
                 {
                     csvMetadata = csvReader.GetRecords<CommuFile>().ToArray();
-                    InitialiseCheckListsFromArray();
                 }
             }
         }
@@ -143,11 +151,22 @@ namespace Starlit_Compiler
 
         private async Task FetchMetadata()
         {
+            string metadataString;
             using (var webClient = new System.Net.WebClient())
             {
-                CsvMetadataString = await webClient.DownloadStringTaskAsync("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWmIqtwbGay6DKz64lY3oz3ttQkXt0j7hOsWGrV3K_AmTATOyzVPm1CPc9jx86WWh4mAUEWNjw18ee/pub?gid=0&single=true&output=csv");
+                metadataString = await webClient.DownloadStringTaskAsync("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWmIqtwbGay6DKz64lY3oz3ttQkXt0j7hOsWGrV3K_AmTATOyzVPm1CPc9jx86WWh4mAUEWNjw18ee/pub?gid=0&single=true&output=csv");
             }
-            InitialiseCheckListsFromString();
+            try
+            {
+                ConvertMetadataStringToArray(metadataString);
+                CsvMetadataString = metadataString;
+                InitialiseCheckListsFromArray();
+            }
+            catch (CsvHelper.BadDataException)
+            {
+                MessageBox.Show($"Downloaded metadata could not be successfully parsed.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void RunBatchFile(string batchPath)
