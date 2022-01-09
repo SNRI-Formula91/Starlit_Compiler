@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-
-namespace Starlit_Compiler
+﻿namespace Starlit_Compiler
 {
     partial class Form1
     {
@@ -39,19 +37,21 @@ namespace Starlit_Compiler
             this.button5 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnFetchMetadata = new System.Windows.Forms.Button();
+            this.txtMetadataUrl = new System.Windows.Forms.TextBox();
+            this.pnlCommands = new System.Windows.Forms.Panel();
             this.btnConvertCsv = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.progressLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtMetadataUrl = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pnlMain = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel13.SuspendLayout();
+            this.pnlCommands.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -127,18 +127,14 @@ namespace Starlit_Compiler
             this.panel1.Size = new System.Drawing.Size(956, 56);
             this.panel1.TabIndex = 52;
             // 
-            // panel13
+            // label1
             // 
-            this.panel13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel13.Controls.Add(this.btnConvertCsv);
-            this.panel13.Controls.Add(this.button3);
-            this.panel13.Controls.Add(this.button4);
-            this.panel13.Controls.Add(this.button5);
-            this.panel13.Location = new System.Drawing.Point(845, 64);
-            this.panel13.Margin = new System.Windows.Forms.Padding(7, 2, 7, 2);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(119, 240);
-            this.panel13.TabIndex = 62;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "CSV Metadata URL:";
             // 
             // btnFetchMetadata
             // 
@@ -151,6 +147,29 @@ namespace Starlit_Compiler
             this.btnFetchMetadata.Text = "Fetch .csv metadata";
             this.btnFetchMetadata.UseVisualStyleBackColor = true;
             this.btnFetchMetadata.Click += new System.EventHandler(this.BtnFetchMetadata_Click);
+            // 
+            // txtMetadataUrl
+            // 
+            this.txtMetadataUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMetadataUrl.Location = new System.Drawing.Point(114, 31);
+            this.txtMetadataUrl.Name = "txtMetadataUrl";
+            this.txtMetadataUrl.Size = new System.Drawing.Size(719, 20);
+            this.txtMetadataUrl.TabIndex = 3;
+            this.txtMetadataUrl.TextChanged += new System.EventHandler(this.TxtMetadataUrl_TextChanged);
+            // 
+            // pnlCommands
+            // 
+            this.pnlCommands.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlCommands.Controls.Add(this.btnConvertCsv);
+            this.pnlCommands.Controls.Add(this.button3);
+            this.pnlCommands.Controls.Add(this.button4);
+            this.pnlCommands.Controls.Add(this.button5);
+            this.pnlCommands.Location = new System.Drawing.Point(845, 64);
+            this.pnlCommands.Margin = new System.Windows.Forms.Padding(7, 2, 7, 2);
+            this.pnlCommands.Name = "pnlCommands";
+            this.pnlCommands.Size = new System.Drawing.Size(119, 240);
+            this.pnlCommands.TabIndex = 62;
             // 
             // btnConvertCsv
             // 
@@ -199,24 +218,19 @@ namespace Starlit_Compiler
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(0, 17);
             // 
-            // txtMetadataUrl
+            // pnlMain
             // 
-            this.txtMetadataUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMetadataUrl.Location = new System.Drawing.Point(114, 31);
-            this.txtMetadataUrl.Name = "txtMetadataUrl";
-            this.txtMetadataUrl.Size = new System.Drawing.Size(719, 20);
-            this.txtMetadataUrl.TabIndex = 3;
-            this.txtMetadataUrl.TextChanged += new System.EventHandler(this.TxtMetadataUrl_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "CSV Metadata URL:";
+            this.pnlMain.Controls.Add(this.panel1);
+            this.pnlMain.Controls.Add(this.flowLayoutPanel1);
+            this.pnlMain.Controls.Add(this.pnlCommands);
+            this.pnlMain.Location = new System.Drawing.Point(0, 0);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(970, 601);
+            this.pnlMain.TabIndex = 65;
             // 
             // Form1
             // 
@@ -224,19 +238,18 @@ namespace Starlit_Compiler
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(970, 623);
+            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.panel13);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Starlit Compiler";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel13.ResumeLayout(false);
+            this.pnlCommands.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,7 +263,7 @@ namespace Starlit_Compiler
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel pnlCommands;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnConvertCsv;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -259,6 +272,7 @@ namespace Starlit_Compiler
         private System.Windows.Forms.Button btnFetchMetadata;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMetadataUrl;
+        private System.Windows.Forms.Panel pnlMain;
     }
 }
 

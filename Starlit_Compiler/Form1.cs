@@ -231,12 +231,12 @@ namespace Starlit_Compiler
 
         private void DisableAllUpdates()
         {
-            Enabled = false;
+            pnlMain.Enabled = false;
         }
 
         private void EnableAllUpdates()
         {
-            Enabled = true;
+            pnlMain.Enabled = true;
         }
 
         private async Task DownloadFiles(bool downloadAll)
