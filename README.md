@@ -12,13 +12,23 @@ A Windows GUI tool for automating the updating and packaging of game translation
 2. Extract the contents of the release into your workspace directory.
 
 # Usage
-Use the top two fields to specify the Workspace and Commu-kit folder paths. If you've already setup your workspace
-	with the steps from the installation, the locations of these folders should be straightforward.
-For those who have previously downloaded these files separately the two folder paths are referring to the following:
-* **Workspace path**: The folder that contains the `pakchunk99-EngPatch` folder. This folder path and its contents are follow a strict pattern for the English patch creation process.
-* **Commu-kit path**: The folder that contains the `Commu-kit.exe` and its dependencies.
+### Workspace path
+Use the top field to specify the Workspace path. If you've already setup your workspace
+with the steps from the installation, the location of this folder should be straightforward.
+For those who have previously downloaded these files separately, this is referring to the
+folder that contains the `pakchunk99-EngPatch` folder.
+This folder path and its contents follow a strict pattern for the English patch creation process.
+
+### CSV metadata
+On the first startup, the app will need to fetch the CSV metadata (data about the URLs of the commu spreadsheets, file
+location to download the file to, etc.) from the web. This can be done just by clicking the **Fetch .csv metadata** button.
+If the default URL provided does not work, you can replace it with an alternative URL in the second text input box.
+
+The metadata will be cached in the configuration, so the **Fetch .csv metadata** button does not need to be pressed
+again in future uses of the app unless new DLC and new files have been added to the translation Google Drive.
+
 ## Updating
-There are 3 main translation and importing update methods.  
+There are 3 main translation and importing update methods.
   (Note: All 3 updating methods will update the UI in the end in order to create the `.pak` mod files.)
 
 * **UI Only**: Just click **Create .pak**. This only updates the UI files and creates the `.pak` `patch mod file.
@@ -37,6 +47,6 @@ The commands below will log their outputs to log files:
 
 # Other notes
 * You may place the `Starlit_Compiler.exe` file anywhere you please as long as the `Starlit_Compiler.exe.Config` file is also place in the same location. 
-* The config file is used to remember where your Workspace and Commu-kit paths are set for future instances of using the application.
+* The config file is used to remember the Workspace path and CSV URL metadata for future instances of using the application.
 * If you want the compiler to immediately move the created `pakchunk99-EngPatch.pak` file to your game mod directory,
 	you will need to make changes to the last line of the `Export_EngPatch.bat` file and uncomment the last 2 lines in that file.

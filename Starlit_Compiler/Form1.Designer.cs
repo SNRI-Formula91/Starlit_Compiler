@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-
-namespace Starlit_Compiler
+﻿namespace Starlit_Compiler
 {
     partial class Form1
     {
@@ -33,24 +31,27 @@ namespace Starlit_Compiler
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnFetchMetadata = new System.Windows.Forms.Button();
+            this.txtMetadataUrl = new System.Windows.Forms.TextBox();
+            this.pnlCommands = new System.Windows.Forms.Panel();
             this.btnConvertCsv = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.progressLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pnlMain = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel13.SuspendLayout();
+            this.pnlCommands.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -61,16 +62,6 @@ namespace Starlit_Compiler
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(830, 20);
             this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(3, 32);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(830, 20);
-            this.textBox2.TabIndex = 3;
             // 
             // button1
             // 
@@ -83,18 +74,6 @@ namespace Starlit_Compiler
             this.button1.Text = "Workspace Path";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(837, 31);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Commu-kit Path";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -137,28 +116,60 @@ namespace Starlit_Compiler
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnFetchMetadata);
+            this.panel1.Controls.Add(this.txtMetadataUrl);
             this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Location = new System.Drawing.Point(8, 8);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(956, 56);
             this.panel1.TabIndex = 52;
             // 
-            // panel13
+            // label1
             // 
-            this.panel13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel13.Controls.Add(this.btnConvertCsv);
-            this.panel13.Controls.Add(this.button3);
-            this.panel13.Controls.Add(this.button4);
-            this.panel13.Controls.Add(this.button5);
-            this.panel13.Location = new System.Drawing.Point(845, 64);
-            this.panel13.Margin = new System.Windows.Forms.Padding(7, 2, 7, 2);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(119, 240);
-            this.panel13.TabIndex = 62;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "CSV Metadata URL:";
+            // 
+            // btnFetchMetadata
+            // 
+            this.btnFetchMetadata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFetchMetadata.Location = new System.Drawing.Point(837, 30);
+            this.btnFetchMetadata.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.btnFetchMetadata.Name = "btnFetchMetadata";
+            this.btnFetchMetadata.Size = new System.Drawing.Size(117, 23);
+            this.btnFetchMetadata.TabIndex = 10;
+            this.btnFetchMetadata.Text = "Fetch .csv metadata";
+            this.btnFetchMetadata.UseVisualStyleBackColor = true;
+            this.btnFetchMetadata.Click += new System.EventHandler(this.BtnFetchMetadata_Click);
+            // 
+            // txtMetadataUrl
+            // 
+            this.txtMetadataUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMetadataUrl.Location = new System.Drawing.Point(114, 31);
+            this.txtMetadataUrl.Name = "txtMetadataUrl";
+            this.txtMetadataUrl.Size = new System.Drawing.Size(719, 20);
+            this.txtMetadataUrl.TabIndex = 3;
+            this.txtMetadataUrl.TextChanged += new System.EventHandler(this.TxtMetadataUrl_TextChanged);
+            // 
+            // pnlCommands
+            // 
+            this.pnlCommands.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlCommands.Controls.Add(this.btnConvertCsv);
+            this.pnlCommands.Controls.Add(this.button3);
+            this.pnlCommands.Controls.Add(this.button4);
+            this.pnlCommands.Controls.Add(this.button5);
+            this.pnlCommands.Location = new System.Drawing.Point(845, 64);
+            this.pnlCommands.Margin = new System.Windows.Forms.Padding(7, 2, 7, 2);
+            this.pnlCommands.Name = "pnlCommands";
+            this.pnlCommands.Size = new System.Drawing.Size(119, 240);
+            this.pnlCommands.TabIndex = 62;
             // 
             // btnConvertCsv
             // 
@@ -207,25 +218,38 @@ namespace Starlit_Compiler
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(0, 17);
             // 
+            // pnlMain
+            // 
+            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlMain.Controls.Add(this.panel1);
+            this.pnlMain.Controls.Add(this.flowLayoutPanel1);
+            this.pnlMain.Controls.Add(this.pnlCommands);
+            this.pnlMain.Location = new System.Drawing.Point(0, 0);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(970, 601);
+            this.pnlMain.TabIndex = 65;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(970, 623);
+            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.panel13);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Starlit Compiler";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel13.ResumeLayout(false);
+            this.pnlCommands.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,20 +257,22 @@ namespace Starlit_Compiler
 
         #endregion
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel pnlCommands;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnConvertCsv;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel progressLabel;
+        private System.Windows.Forms.Button btnFetchMetadata;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtMetadataUrl;
+        private System.Windows.Forms.Panel pnlMain;
     }
 }
 
